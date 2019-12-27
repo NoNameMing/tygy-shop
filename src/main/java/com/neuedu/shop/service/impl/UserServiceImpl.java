@@ -1,0 +1,21 @@
+package com.neuedu.shop.service.impl;
+
+import com.neuedu.shop.mapper.UserMapper;
+import com.neuedu.shop.pojo.User;
+import com.neuedu.shop.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class UserServiceImpl implements UserService {
+
+    @Autowired
+    private UserMapper mapper;
+
+    @Override
+    public List<User> findAll() {
+        return mapper.findAll();
+    }
+}

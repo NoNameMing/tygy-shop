@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:cache="http://www.springframework.org/schema/cache"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context
+		http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/tx
+		http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/cache
+		http://www.springframework.org/schema/cache/spring-cache.xsd">
+
+    <!-- 添加注解 -->
+    <context:component-scan base-package="com.neuedu.shop" />
+
+    <!-- 使用aop中的动态代理 -->
+    <aop:aspectj-autoproxy />
+
+    <!-- 配置.properties文件 -->
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <!-- <property name="location" value="classpath:db.properties" /> -->
+        <property name="locations">
+            <list>
+                <value>classpath:db.properties</value>
+                <value>classpath:redis.properties</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 使用dbcp中的DataSource -->
+    <bean id="dataSource"
+          class="org.apache.commons.dbcp2.BasicDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${driver}" />
+        <property name="url" value="${url}" />
+        <property name="username" value="${username}" />
+        <property name="password" value="${password}" />
+    </bean>
+
+    <!-- 通过Spring加载mybatis -->
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <!-- 扫描所有的xxMapper.xml -->
+        <property name="mapperLocations"
+                  value="classpath:mapper/*.xml" />
+        <!-- 取别名 -->
+        <property name="typeAliasesPackage"
+                  value="com.neuedu.shop.pojo" />
+
+    </bean>
+
+    <!-- 配置映射接口:通过扫描所有mapper接口 -->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.neuedu.shop.mapper" />
+        <property name="sqlSessionFactoryBeanName"
+                  value="sqlSessionFactory"></property>
+    </bean>
+
+    <!-- 事务的处理 -->
+    <!-- 配置事务管理器 -->
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource" />
+    </bean>
+    <!-- 事务注解 -->
+    <tx:annotation-driven />
+
+    <!-- Jedis的配置 -->
+    <!-- 配置JedisPoolConfig连接池 -->
+    <bean id="poolConfig" class="redis.clients.jedis.JedisPoolConfig">
+        <property name="maxIdle" value="100" />
+        <property name="minIdle" value="0" />
+        <property name="maxWaitMillis" value="-1" />
+        <!-- <property name="maxActive" value="300"/> -->
+        <property name="testOnBorrow" value="true" />
+    </bean>
+    <!-- 配置jedis连接工厂 -->
+    <bean id="connectionFactory"
+          class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory">
+        <property name="poolConfig" ref="poolConfig" />
+        <property name="hostName" value="${spring.redis.host}" />
+        <property name="port" value="${spring.redis.port}" />
+        <property name="password" value="" />
+        <property name="database" value="${spring.redis.database}" />
+        <property name="timeout" value="${spring.redis.timeout}" />
+    </bean>
+    <!-- 配置RedisTemplate -->
+    <bean id="redisTemplate"
+          class="org.springframework.data.redis.core.RedisTemplate">
+        <property name="connectionFactory" ref="connectionFactory" />
+        <!-- String -->
+        <property name="keySerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="valueSerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.JdkSerializationRedisSerializer" />
+        </property>
+        <!-- hash -->
+        <property name="hashKeySerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+        <property name="hashValueSerializer">
+            <bean
+                    class="org.springframework.data.redis.serializer.StringRedisSerializer" />
+        </property>
+    </bean>
+    <!-- 定义缓存管理器redisCacheManager。 注意：cache-manager默认值是cacheManager,你的缓存管理器id要是命名是cacheManager，这里可以省略
+        1.使用注解驱动 -->
+    <cache:annotation-driven
+            cache-manager="redisCacheManager" />
+    <!-- 2.定义缓存管理器 -->
+    <bean id="redisCacheManager"
+          class="org.springframework.data.redis.cache.RedisCacheManager">
+        <!-- 通过构造方法注入redisTemplate -->
+        <constructor-arg index="0" ref="redisTemplate" />
+        <!-- 定义超时时间，单位秒 -->
+        <property name="defaultExpiration" value="5000"></property>
+        <!-- 设置缓存器名称 -->
+        <property name="cacheNames">
+            <list>
+                <value>redisCacheManager</value>
+            </list>
+        </property>
+    </bean>
+
+</beans>
