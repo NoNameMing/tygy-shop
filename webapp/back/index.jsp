@@ -83,7 +83,7 @@
                                 <ul>
                                     <li><a href="add_category_root.html"> <i
                                             class="pull-right icon-plane"></i>添加根类别
-                                    </a><a href="categories.html"> <i
+                                    </a><a href="findAll.category"> <i
                                             class="pull-right icon-fire"></i>类别列表
                                     </a></li>
                                 </ul>

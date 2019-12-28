@@ -26,4 +26,16 @@ public class AdminController {
         // 告诉controller层要将结果交给哪个页面显示
         return "admin_list.jsp";
     }
+
+    @RequestMapping("/back/delete.admin")
+    public String delete(Integer id) {
+        service.delete(id);
+        return "redirect:findAll.admin";
+    }
+
+    @RequestMapping("/back/resetPassword.admin")
+    public String resetPassword(Integer id) {
+        service.resetPassword(id);
+        return "redirect:findAll.admin";
+    }
 }

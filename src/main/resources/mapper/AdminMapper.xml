@@ -14,4 +14,15 @@
         <result column="admin_name" property="name" />
         <result column="admin_password" property="password" />
     </resultMap>
+
+    <delete id="delete" parameterType="com.neuedu.shop.pojo.Admin">
+        delete from t_admin
+        where id=#{id}
+    </delete>
+
+    <update id="resetPassword" parameterType="com.neuedu.shop.pojo.Admin">
+        update t_admin
+        set admin_password=md5('admin')
+        where id=#{id}
+    </update>
 </mapper>

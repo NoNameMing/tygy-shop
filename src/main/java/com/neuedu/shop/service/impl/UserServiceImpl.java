@@ -37,4 +37,10 @@ public class UserServiceImpl implements UserService {
             mapper.delete(id);
         }
     }
+
+    @Override
+    public void resetPassword(Integer id) {
+        mapper.resetPassword(id);
+    }
+
 }

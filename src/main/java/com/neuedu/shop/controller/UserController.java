@@ -39,9 +39,13 @@ public class UserController {
 
     @RequestMapping("/back/deletes.user")
     public String delete(Integer[] ids) {
-        for (int id : ids) {
-            service.delete(id);
-        }
+        service.delete(ids);
+        return "redirect:findAll.user";
+    }
+
+    @RequestMapping("/back/resetPassword.user")
+    public String resetPassword(Integer id) {
+        service.resetPassword(id);
         return "redirect:findAll.user";
     }
 }

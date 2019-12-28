@@ -9,7 +9,7 @@
         <div class="row">
             <div class="span12">
                 <ul class="pull-right">
-                    <li><a href="<%=path%>/pre/user_register.jsp">前台用户注册</a></li>
+                    <li><a href="<%=path%>/pre/user_register.jsp" target="_blank">前台用户注册</a></li>
                     <li><a href="#">链接2</a></li>
                     <li><a href="#">链接3</a></li>
                     <li><a href="login.html">登录</a></li>
@@ -34,7 +34,7 @@
                     <li><span class="label label-important pull-right">08</span><a
                             href="findAll.admin"><i class="batch stream"></i><br />管理员列表</a></li>
                     <li><a href="findAll.user"><i class="batch users"></i><br />用户列表</a></li>
-                    <li><a href="categories.html"><i class="batch forms"></i><br />类别列表</a></li>
+                    <li><a href="findAll.category"><i class="batch forms"></i><br />类别列表</a></li>
                     <li><a href="products.html"><i class="batch quill"></i><br />商品列表</a></li>
                     <li><span class="label label-important pull-right">04</span><a
                             href="orders.html"><i class="batch plane"></i><br />订单列表</a></li>

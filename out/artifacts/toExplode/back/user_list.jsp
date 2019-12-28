@@ -67,8 +67,8 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">编辑用户名</a> <a href="#">修改</a> <a
-                                                href="javascript:;" onclick="deleteUser(${user.id})">删除</a></li>
+                                        <li><a href="javascript:;" onclick="resetPassword(${user.id})">重置密码</a>
+                                            <a href="javascript:;" onclick="deleteUser(${user.id})">删除</a></li>
                                     </ul>
                                     <script type="text/javascript">
                                         function deleteUser(id) {
@@ -76,6 +76,11 @@
                                                 if(confirm("real?")) {
                                                     window.location.href = "delete.user?id=" + id;
                                                 }
+                                            }
+                                        }
+                                        function resetPassword(id) {
+                                            if(confirm("sure to change?")) {
+                                                window.location.href = "resetPassword.user?id=" + id;
                                             }
                                         }
                                     </script>

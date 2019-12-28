@@ -21,5 +21,14 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.findAll();
     }
 
+    @Override
+    public void delete(Integer id) {
+        adminMapper.delete(id);
+    }
+
+    @Override
+    public void resetPassword(Integer id) {
+        adminMapper.resetPassword(id);
+    };
 
 }
