@@ -7,13 +7,20 @@
           <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
           <root url="file://$MODULE_DIR$/webapp" relative="/" />
         </webroots>
         <sourceRoots>
           <root url="file://$MODULE_DIR$/src/main/java" />
           <root url="file://$MODULE_DIR$/src/main/resources" />
         </sourceRoots>
+      </configuration>
+    </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/beans.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/mvc.xml</file>
+        </fileset>
       </configuration>
     </facet>
   </component>

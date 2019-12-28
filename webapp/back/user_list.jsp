@@ -28,36 +28,19 @@
     <script src="js/setup.js"></script>
 </head>
 <body>
-<div id="in-nav">
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <ul class="pull-right">
-                    <li><a href="#">链接1</a></li>
-                    <li><a href="#">链接2</a></li>
-                    <li><a href="#">链接3</a></li>
-                    <li><a href="login.html">登录</a></li>
-                </ul>
-                <a id="logo" href="index.html">
-                    <h4>
-                        电商平台后台<strong>管理</strong>
-                    </h4>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 <%@include file="header.jsp"%>
 <div class="page">
     <div class="page-container">
         <div class="container">
             <div class="row">
                 <div class="span12">
-                    <a href="#newUserModal" data-toggle="modal" class="btn pull-right">添加用户</a>
+                    <a href="#newUserModal" data-toggle="modal" class="btn btn-success pull-right">添加用户</a>
                     <h4 class="header">用户列表</h4>
+                    <button class="btn btn-success">批量删除</button>
                     <table class="table table-striped sortable">
                         <thead>
                         <tr>
+                            <th></th>
                             <th>用户ID</th>
                             <th>用户名</th>
                             <th>密码</th>
@@ -69,6 +52,8 @@
                         <tbody>
                         <c:forEach items="${users }" var="user">
                         <tr>
+                            <input id="uid" type="hidden" value="${user.id} "/>
+                            <th><input type="checkbox" name=""></th>
                             <td>${user.id}</td>
                             <td>${user.name}</td>
                             <td>${user.password}</td>
@@ -83,8 +68,17 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                         <li><a href="#">编辑用户名</a> <a href="#">修改</a> <a
-                                                href="#">删除</a></li>
+                                                href="javascript:;" onclick="deleteUser(${user.id})">删除</a></li>
                                     </ul>
+                                    <script type="text/javascript">
+                                        function deleteUser(id) {
+                                            if(confirm("delete?")) {
+                                                if(confirm("real?")) {
+                                                    window.location.href = "delete.user?id=" + id;
+                                                }
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </td>
                         </tr>

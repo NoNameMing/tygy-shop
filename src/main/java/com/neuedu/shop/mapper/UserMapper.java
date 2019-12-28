@@ -8,5 +8,9 @@ import java.util.List;
 @Repository
 public interface UserMapper {
 
-    public List<User> findAll();
+    List<User> findAll();
+
+    boolean insert(User user);
+
+    boolean delete(Integer id);
 }

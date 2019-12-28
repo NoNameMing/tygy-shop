@@ -21,10 +21,27 @@ public class UserController {
     @RequestMapping("/back/findAll.user")
     public String findAll(ModelMap map) {
         List<User> users = service.findAll();
-        // 将查询到的结果绑定到 modelMap
         map.addAttribute("users", users);
-        log.info(String.valueOf(users));
-        // 告诉controller层要将结果交给哪个页面显示
         return "user_list.jsp";
+    }
+
+    @RequestMapping("/pre/register.user")
+    public String register(User user) {
+        service.insert(user);
+        return "redirect:index.jsp";
+    }
+
+    @RequestMapping("/back/delete.user")
+    public String delete(Integer id) {
+        service.delete(id);
+        return "redirect:findAll.user";
+    }
+
+    @RequestMapping("/back/deletes.user")
+    public String delete(Integer[] ids) {
+        for (int id : ids) {
+            service.delete(id);
+        }
+        return "redirect:findAll.user";
     }
 }

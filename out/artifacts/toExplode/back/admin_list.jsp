@@ -28,25 +28,6 @@
     <script src="js/setup.js"></script>
 </head>
 <body>
-<div id="in-nav">
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <ul class="pull-right">
-                    <li><a href="#">链接1</a></li>
-                    <li><a href="#">链接2</a></li>
-                    <li><a href="#">链接3</a></li>
-                    <li><a href="login.html">登录</a></li>
-                </ul>
-                <a id="logo" href="index.html">
-                    <h4>
-                        电商平台后台<strong>管理</strong>
-                    </h4>
-                </a>
-            </div>
-        </div>
-    </div>
-</div>
 <%@include file="header.jsp"%>
 <div class="page">
     <div class="page-container">

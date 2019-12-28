@@ -6,4 +6,10 @@ import java.util.List;
 
 public interface UserService {
     List<User> findAll();
+
+    void insert(User user);
+
+    void delete(Integer id);
+
+    void delete(Integer[] ids);
 }

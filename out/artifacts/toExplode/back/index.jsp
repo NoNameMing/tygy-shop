@@ -1,4 +1,5 @@
 <%@page contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 
 <html>
@@ -35,32 +36,9 @@
             }
         }
     </script>
-    <meta http-equiv="Content-Type" content="text/html; charset=gbk" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
-
-<!-- header -->
-<div id="in-nav">
-    <div class="container">
-        <div class="row">
-            <div class="span12">
-                <ul class="pull-right">
-                    <li><a href="#">链接1</a></li>
-                    <li><a href="#">链接2</a></li>
-                    <li><a href="#">链接3</a></li>
-                    <li><a href="login.html">登录</a></li>
-                    <li><a href="javascript:void(0);" onclick="logout()">注销</a></li>
-                    <li><a href="regist.html">管理员注册</a></li>
-                </ul>
-                <h4>
-                    <a id="logo" href="index.html"> 电商平台后台<strong>管理</strong>
-                    </a>
-                </h4>
-            </div>
-        </div>
-    </div>
-
-</div>
 
 <%@include file="header.jsp"%>
 

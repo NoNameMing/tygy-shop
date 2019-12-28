@@ -8,6 +8,7 @@
         select id, user_name, user_password, user_phone, user_addr, user_register_date
         from t_user
     </select>
+
     <!-- 配置数据表与实体类，使命名一致 -->
     <resultMap id="findAll" type="com.neuedu.shop.pojo.User">
         <id column="id" property="id" />
@@ -17,4 +18,16 @@
         <result column="user_addr" property="addr" />
         <result column="user_register_date" property="rdate" />
     </resultMap>
+
+    <!-- 添加方法的实现 -->
+    <insert id="insert" parameterType="com.neuedu.shop.pojo.User">
+        insert into t_user
+        values (null, #{name}, md5(#{password}), #{phone}, #{addr}, now())
+    </insert>
+
+    <!-- 删除用户 -->
+    <delete id="delete" parameterType="com.neuedu.shop.pojo.User">
+        delete from t_user
+        where id=#{id}
+    </delete>
 </mapper>
