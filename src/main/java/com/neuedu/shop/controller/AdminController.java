@@ -38,4 +38,10 @@ public class AdminController {
         service.resetPassword(id);
         return "redirect:findAll.admin";
     }
+
+    @RequestMapping("/back/addAdmin.admin")
+    public String addAdmin(Admin admin) {
+        service.addAdmin(admin);
+        return "redirect:findAll.admin";
+    }
 }

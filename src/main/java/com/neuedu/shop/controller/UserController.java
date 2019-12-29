@@ -48,4 +48,10 @@ public class UserController {
         service.resetPassword(id);
         return "redirect:findAll.user";
     }
+
+    @RequestMapping("/back/addUser.user")
+    public String addAdmin(User user) {
+        service.insert(user);
+        return "redirect:findAll.user";
+    }
 }

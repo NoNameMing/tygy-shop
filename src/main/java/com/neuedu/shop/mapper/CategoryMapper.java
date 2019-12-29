@@ -10,4 +10,28 @@ public interface CategoryMapper {
     List<Category> findAll();
 
     void delete(Integer id);
+
+    void addRootCategory(Category category);
+
+    List<Category> findToTree();
+
+    /**
+     * 添加子类别
+     */
+    void addChildCategory(Category category);
+
+    /**
+     * 传父级别的id值，得grade
+     * @param pid
+     * @return
+     */
+    int findByParentId(int pid);
+
+    /**
+     * 更新父节点的叶子结点 status 为非
+     * @param pid 父级别的id值
+     */
+    void updateParent(int pid);
+
+    Category findById(int id);
 }

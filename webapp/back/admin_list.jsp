@@ -100,31 +100,31 @@
             <div class="modal-header">
                 <button type="button" data-dismiss="modal" aria-hidden="true"
                         class="close">&times;</button>
-                <h3>新建管理员</h3>
+                <h3>添加管理员</h3>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="add.do" method="post" />
-                <div class="control-group">
-                    <label for="inputEmail" class="control-label">账号</label>
-                    <div class="controls">
-                        <input id="inputEmail" type="text" placeholder="请输入用户名" />
+                <form class="form-horizontal" action="addAdmin.admin" method="post">
+                    <div class="control-group">
+                        <label for="inputEmail"  class="control-label">管理员账号</label>
+                        <div class="controls">
+                            <input id="inputEmail" name="name" type="text" placeholder="请输入管理员账号" />
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label for="inputCurrentPassword" class="control-label">密码
-                    </label>
-                    <div class="controls">
-                        <input id="inputCurrentPassword" type="password"
-                               placeholder="请输入密码" />
+                    <div class="control-group">
+                        <label for="inputCurrentPassword"  class="control-label">管理员密码
+                        </label>
+                        <div class="controls">
+                            <input id="inputCurrentPassword" type="password"
+                                   placeholder="请输入密码" name="password"/>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" class="btn">关闭</a><input
-                        type="submit" data-dismiss="modal" class="btn btn-primary"
-                        value="添加" />
-                </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn">关闭</a><input
+                            type="submit" class="btn btn-primary"
+                            value="添加" />
+                    </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>

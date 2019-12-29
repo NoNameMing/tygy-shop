@@ -38,4 +38,10 @@
         set user_password=md5('000000')
         where id=#{id}
     </update>
+
+<!--    &lt;!&ndash; 后台添加一个用户 &ndash;&gt;-->
+<!--    <insert id="addUser" parameterType="com.neuedu.shop.pojo.User">-->
+<!--        insert into t_user-->
+<!--        values (null, #{name}, md5(#{password}), #{phone}, #{addr}, now())-->
+<!--    </insert>-->
 </mapper>

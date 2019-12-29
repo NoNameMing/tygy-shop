@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,4 +18,15 @@ public class Category implements Serializable {
     private Integer pid;
     private boolean leaf;
     private Integer grade;
+    /**
+     * 存放该类别子类别的容器
+     */
+    private List<Category> children;
+
+    public Category(String name, String desc, Integer pid, Integer grade) {
+        this.name = name;
+        this.desc = desc;
+        this.pid = pid;
+        this.grade = grade;
+    }
 }

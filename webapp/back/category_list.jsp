@@ -23,6 +23,63 @@
     <script src="js/fullcalendar.min.js"></script>
     <script src="js/gcal.js"></script>
     <script src="js/setup.js"></script>
+    <script type="text/javascript">
+        // js 显示数据
+        $(function () {
+            // 异步请求
+           $.ajax({
+               url:"findToTree.category",
+               dataType: "json",
+               success:function(categories){
+                   // 递归
+                   findToTree(categories);
+               }
+           });
+           function findToTree(categories) {
+               // 递归业务
+               for (let i in categories) {
+                   let c = categories[i];
+                   if(c.grade==1){
+                       str = "";
+                   } else if (c.grade==2){
+                       str = "---";
+                   }else{
+                       str = "------"
+                   }
+                   // 创建模版
+                   var tr = "<tr>" +
+                                "<td>" + c.id + "</td>" +
+                                "<td>" + str + c.name + "</td>" +
+                                "<td>" + c.desc + "</td>" +
+                                "<td>" + c.pid + "</td>" +
+                                "<td>" + c.leaf + "</td>"+
+                                "<td>" + c.grade + "</td>" +
+                                "<td>" +
+                                "<div class='btn-group'>"
+                                    + "<button class='btn'>操作</button>"
+                                    + "<button data-toggle='dropdown' class='btn dropdown-toggle'>"
+                                    + "<span class='caret'>" + "</span>" +
+                                        "</button>" +
+                                    "<ul class='dropdown-menu'>" +
+                                        "<li>" +
+                                            "<a href='findById.category?id="+c.id+"'>添加子类别</a>" +
+                                            "<a href='#'>修改</a>" +
+                                            "<a href='#'>删除</a>" +
+                                        "</li>" +
+                                    "</ul>" +
+                                "</div>" +
+                                "</td>" +
+                             "</tr>";
+                   if (!c.leaf) {
+                       $(tr).appendTo("#tableTree");
+                       findToTree(c.children);
+                   } else {
+                       $(tr).appendTo("#tableTree");
+                   }
+               }
+           }
+        });
+    </script>
 </head>
 <body>
 <!-- header部分 -->
@@ -45,32 +102,7 @@
                             <th>级别</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <c:forEach items="${categories}" var="c">
-                        <tr>
-                            <td>${c.id}</td>
-                            <td>${c.name}</td>
-                            <td>${c.desc}</td>
-                            <td>${c.pid}</td>
-                            <td>${c.leaf}</td>
-                            <td>${c.grade}</td>
-                            <td>
-                                <div class="btn-group">
-                                    <button class="btn">操作</button>
-                                    <button data-toggle="dropdown" class="btn dropdown-toggle">
-                                        <span class="caret"></span>
-                                    </button>
-                                    <ul class="dropdown-menu">
-                                        <li>
-                                            <a href="add_category_child.html">添加子类别</a>
-                                            <a href="#">修改</a>
-                                            <a href="#">删除</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </td>
-                        </tr>
-                        </c:forEach>
+                        <tbody id="tableTree">
                         </tbody>
                     </table>
                     <div class="pagination pagination-centered">
@@ -94,7 +126,7 @@
                 <h3>添加根类别</h3>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="#" method="post">
+                <form class="form-horizontal" action="addRoot.category" method="post">
                     <div class="control-group">
                         <label for="inputEmail"  class="control-label">类别名称</label>
                         <div class="controls">
@@ -105,11 +137,9 @@
                         <label for="inputCurrentPassword"  class="control-label">类别描述
                         </label>
                         <div class="controls">
-                            <textarea rows="5" cols="20" name="descr"></textarea>
+                            <textarea rows="5" cols="20" name="desc"></textarea>
                         </div>
                     </div>
-
-
                     <div class="modal-footer">
                         <a href="#" data-dismiss="modal" class="btn">关闭</a><input
                             type="submit" class="btn btn-primary"

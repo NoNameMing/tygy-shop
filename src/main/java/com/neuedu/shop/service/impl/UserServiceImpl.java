@@ -43,4 +43,9 @@ public class UserServiceImpl implements UserService {
         mapper.resetPassword(id);
     }
 
+//    @Override
+//    public void addUser(User user) {
+//        mapper.addUser(user);
+//    }
+
 }

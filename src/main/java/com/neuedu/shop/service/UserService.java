@@ -14,4 +14,6 @@ public interface UserService {
     void delete(Integer[] ids);
 
     void resetPassword(Integer id);
+
+//    void addUser(User user);
 }

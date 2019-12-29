@@ -29,6 +29,11 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void resetPassword(Integer id) {
         adminMapper.resetPassword(id);
-    };
+    }
+
+    @Override
+    public void addAdmin(Admin admin) {
+        adminMapper.addAdmin(admin);
+    }
 
 }

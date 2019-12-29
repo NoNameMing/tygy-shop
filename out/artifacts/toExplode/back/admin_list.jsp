@@ -58,9 +58,24 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="#">编辑用户名</a> <a href="update_admin.html">修改</a> <a
-                                                href="#">删除</a></li>
+                                        <li><a href="javascript:;" onclick="resetPassword(${admin.id})">重置密码</a>
+                                            <a href="update_admin.html">修改</a>
+                                            <a href="javascript:;" onclick="deleteAdmin(${admin.id})">删除</a></li>
                                     </ul>
+                                    <script type="text/javascript">
+                                        function deleteAdmin(id) {
+                                            if(confirm("delete?")) {
+                                                if(confirm("real?")) {
+                                                    window.location.href = "delete.admin?id=" + id;
+                                                }
+                                            }
+                                        }
+                                        function resetPassword(id) {
+                                            if(confirm("sure to change?")) {
+                                                window.location.href = "resetPassword.admin?id=" + id;
+                                            }
+                                        }
+                                    </script>
                                 </div>
                             </td>
                         </tr>
@@ -85,31 +100,31 @@
             <div class="modal-header">
                 <button type="button" data-dismiss="modal" aria-hidden="true"
                         class="close">&times;</button>
-                <h3>新建管理员</h3>
+                <h3>添加管理员</h3>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="add.do" method="post" />
-                <div class="control-group">
-                    <label for="inputEmail" class="control-label">账号</label>
-                    <div class="controls">
-                        <input id="inputEmail" type="text" placeholder="请输入用户名" />
+                <form class="form-horizontal" action="addAdmin.admin" method="post">
+                    <div class="control-group">
+                        <label for="inputEmail"  class="control-label">管理员账号</label>
+                        <div class="controls">
+                            <input id="inputEmail" name="name" type="text" placeholder="请输入管理员账号" />
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label for="inputCurrentPassword" class="control-label">密码
-                    </label>
-                    <div class="controls">
-                        <input id="inputCurrentPassword" type="password"
-                               placeholder="请输入密码" />
+                    <div class="control-group">
+                        <label for="inputCurrentPassword"  class="control-label">管理员密码
+                        </label>
+                        <div class="controls">
+                            <input id="inputCurrentPassword" type="password"
+                                   placeholder="请输入密码" name="password"/>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" class="btn">关闭</a><input
-                        type="submit" data-dismiss="modal" class="btn btn-primary"
-                        value="添加" />
-                </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn">关闭</a><input
+                            type="submit" class="btn btn-primary"
+                            value="添加" />
+                    </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>

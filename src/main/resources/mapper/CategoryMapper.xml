@@ -4,6 +4,13 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.shop.mapper.CategoryMapper">
 
+    <!-- 封装一个常用的查询头 -->
+    <sql id="baseSQL">
+        select id, category_name, category_description, category_parentId, leaf, grade
+        from t_category
+    </sql>
+
+
     <select id="findAll" resultMap="findAll">
         select id, category_name, category_description, category_parentId, leaf, grade
         from t_category
@@ -18,7 +25,51 @@
         <result column="category_description" property="desc" />
     </resultMap>
 
-    <update id="delete" parameterType="com.neuedu.shop.pojo.Category">
-        update
+    <!-- 添加根类别 -->
+    <insert id="addRootCategory" parameterType="com.neuedu.shop.pojo.Category">
+        insert into t_category values (null, #{name}, #{desc}, 0, 1, 1);
+    </insert>
+
+    <!-- 树状列表展示 递归头 -->
+    <select id="findToTree" resultMap="findToTree">
+        <include refid="baseSQL" />
+        where category_parentId=0
+    </select>
+
+    <!-- 递归体 -->
+    <resultMap id="findToTree" type="com.neuedu.shop.pojo.Category">
+        <id column="id" property="id" />
+        <result column="category_name" property="name" />
+        <result column="category_parentId" property="pid" />
+        <result column="leaf" property="leaf" />
+        <result column="grade" property="grade" />
+        <result column="category_description" property="desc" />
+        <collection column="id" property="children" select="selectChildrenByPid" ofType="com.neuedu.shop.pojo.Category"></collection>
+    </resultMap>
+
+    <!-- 递归方法 -->
+    <select id="selectChildrenByPid" resultMap="findToTree" parameterType="int">
+        <include refid="baseSQL" />
+        where category_parentId=#{id}
+    </select>
+    
+    <!-- 添加子类别 -->
+    <insert id="addChildCategory" parameterType="Category">
+        insert into t_category values(null, #{name}, #{desc}, #{pid}, #{leaf}, #{grade})
+    </insert>
+
+    <!-- 查询父级别的grade的值 -->
+    <select id="findByParentId" resultType="int">
+        select grade from t_category where id = #{pid}
+    </select>
+    
+    <!-- 更新父节点的叶子结点 status 为非 -->
+    <update id="updateParent" parameterType="int">
+        update t_category set leaf=0 where id=#{pid}
     </update>
+
+    <select id="findById" resultMap="findAll" parameterType="com.neuedu.shop.pojo.Category">
+        select id, category_description, category_name, category_parentId, leaf, grade from t_category where id=#{id}
+    </select>
+
 </mapper>

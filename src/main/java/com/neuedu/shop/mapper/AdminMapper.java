@@ -15,4 +15,6 @@ public interface AdminMapper {
     void delete(Integer id);
 
     void resetPassword(Integer id);
+
+    void addAdmin(Admin admin);
 }

@@ -25,4 +25,9 @@
         set admin_password=md5('admin')
         where id=#{id}
     </update>
+    
+    <insert id="addAdmin" parameterType="com.neuedu.shop.pojo.Admin">
+        insert into t_admin
+        values (null, #{name}, md5(#{password}))
+    </insert>
 </mapper>

@@ -15,4 +15,6 @@ public interface UserMapper {
     boolean delete(Integer id);
 
     void resetPassword(Integer id);
+
+//    boolean addUser(User user);
 }

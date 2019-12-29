@@ -8,4 +8,12 @@ public interface CategoryService {
     List<Category> findAll();
 
     void delete(Integer id);
+
+    void addRootCategory(Category category);
+
+    List<Category> findToTree();
+
+    void addChildCategory(String name, String desc, int pid);
+
+    Category findById(int id);
 }

@@ -108,31 +108,42 @@
             <div class="modal-header">
                 <button type="button" data-dismiss="modal" aria-hidden="true"
                         class="close">&times;</button>
-                <h3>新建用户</h3>
+                <h3>添加用户</h3>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="add.do" method="post" />
-                <div class="control-group">
-                    <label for="inputEmail" class="control-label">用户名</label>
-                    <div class="controls">
-                        <input id="inputEmail" type="text" placeholder="请输入用户名" />
+                <form class="form-horizontal" action="addUser.user" method="post">
+                    <div class="control-group">
+                        <label for="inputEmail"  class="control-label">用户名</label>
+                        <div class="controls">
+                            <input id="inputEmail" name="name" type="text" placeholder="请输入用户名" />
+                        </div>
                     </div>
-                </div>
-                <div class="control-group">
-                    <label for="inputCurrentPassword" class="control-label">密码
-                    </label>
-                    <div class="controls">
-                        <input id="inputCurrentPassword" type="password"
-                               placeholder="请输入密码" />
+                    <div class="control-group">
+                        <label for="inputCurrentPassword"  class="control-label">密码</label>
+                        <div class="controls">
+                            <input id="inputCurrentPassword" type="password"
+                                   placeholder="请输入用户密码" name="password"/>
+                        </div>
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <a href="#" data-dismiss="modal" class="btn">关闭</a><input
-                        type="submit" data-dismiss="modal" class="btn btn-primary"
-                        value="添加用户" />
-                </div>
+                    <div class="control-group">
+                        <label for="inputEmail"  class="control-label">用户电话</label>
+                        <div class="controls">
+                            <input id="inputNumber" name="phone" type="number" placeholder="请输入用户号码" />
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="inputEmail"  class="control-label">用户地址</label>
+                        <div class="controls">
+                            <input id="inputAddr" name="addr" type="text" placeholder="请输入用户地址" />
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" data-dismiss="modal" class="btn">关闭</a><input
+                            type="submit" class="btn btn-primary"
+                            value="添加" />
+                    </div>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>

@@ -81,7 +81,7 @@
                                     class="label label-inverse pull-right">2 </span>类别管理</a></li>
                             <li id="bookmarks" class="collapse">
                                 <ul>
-                                    <li><a href="add_category_root.html"> <i
+                                    <li><a href="category_addroot.jsp"> <i
                                             class="pull-right icon-plane"></i>添加根类别
                                     </a><a href="findAll.category"> <i
                                             class="pull-right icon-fire"></i>类别列表

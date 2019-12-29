@@ -25,4 +25,32 @@ public class CategoryServiceImpl implements CategoryService {
     public void delete(Integer id) {
         mapper.delete(id);
     }
+
+    @Override
+    public void addRootCategory(Category category) {
+        mapper.addRootCategory(category);
+    }
+
+    @Override
+    public List<Category> findToTree() {
+        return mapper.findToTree();
+    }
+
+    @Override
+    public void addChildCategory(String name, String desc, int pid) {
+        // 查父级别的 grade
+        int grade = mapper.findByParentId(pid);
+        // 添加操作
+        mapper.addChildCategory(new Category(name, desc, pid, grade+1));
+        // 将父节点的 leaf 状态更改
+        mapper.updateParent(pid);
+    }
+
+    @Override
+    public Category findById(int id) {
+        Category category = mapper.findById(id);
+        return category;
+    }
+
+
 }

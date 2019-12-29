@@ -2,16 +2,19 @@ package com.neuedu.shop.controller;
 
 import com.neuedu.shop.pojo.Category;
 import com.neuedu.shop.service.CategoryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
 @Controller
 @Transactional
+@Slf4j
 public class CategoryController {
 
     @Autowired
@@ -28,5 +31,30 @@ public class CategoryController {
     public String delete(Integer id) {
         service.delete(id);
         return "redirect:findAll.category";
+    }
+
+    @RequestMapping("/back/addRoot.category")
+    public String addRootCategory(Category category) {
+        service.addRootCategory(category);
+        return "redirect:findAll.category";
+    }
+
+    @RequestMapping("/back/findToTree.category")
+    @ResponseBody
+    public List<Category> findToTree() {
+        return service.findToTree(); // category 容器
+    }
+
+    @RequestMapping("/back/addChild.category")
+    public String addChildCategory(String name, String desc, int pid) {
+        service.addChildCategory(name, desc, pid);
+        return "redirect:category_list.jsp";
+    }
+
+    @RequestMapping("/back/findById.category")
+    public String findById(int id, ModelMap map) {
+        Category c = service.findById(id);
+        map.addAttribute("c", c);
+        return "forward:category_addchild.jsp";
     }
 }
