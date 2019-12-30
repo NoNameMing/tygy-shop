@@ -46,8 +46,11 @@
                                     <td><input type="hidden" name="pid" value=${c.id } /><span>${c.name }</span></td>
                                 </tr>
                                 <tr>
-                                    <td rowspan="2"><input type="submit" value="添加"
-                                                           class="btn btn-primary" /></td>
+                                    <td></td>
+                                    <td>
+                                        <input class="btn btn-success" type="submit" value="添加" />&nbsp;&nbsp;&nbsp;
+                                        <input class="btn btn-danger" type="reset" value="重置">
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

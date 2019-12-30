@@ -59,7 +59,7 @@
     </insert>
 
     <!-- 查询父级别的grade的值 -->
-    <select id="findByParentId" resultType="int">
+    <select id="findByParentId" resultType="int">n
         select grade from t_category where id = #{pid}
     </select>
     
@@ -72,4 +72,9 @@
         select id, category_description, category_name, category_parentId, leaf, grade from t_category where id=#{id}
     </select>
 
+    <update id="modifyCategoryDesc" parameterType="com.neuedu.shop.pojo.Category">
+        update t_category
+        set category_description=#{desc}
+        where id=#{id}
+    </update>
 </mapper>

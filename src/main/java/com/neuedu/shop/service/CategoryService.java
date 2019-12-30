@@ -16,4 +16,6 @@ public interface CategoryService {
     void addChildCategory(String name, String desc, int pid);
 
     Category findById(int id);
+
+    void modifyCategoryDesc(Category category);
 }

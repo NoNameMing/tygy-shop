@@ -27,11 +27,11 @@ public class CategoryController {
         return "forward:category_list.jsp";
     }
 
-    @RequestMapping("/back/delete.category")
-    public String delete(Integer id) {
-        service.delete(id);
-        return "redirect:findAll.category";
-    }
+//    @RequestMapping("/back/delete.category")
+//    public String delete(Integer id) {
+//        service.delete(id);
+//        return "redirect:findAll.category";
+//    }
 
     @RequestMapping("/back/addRoot.category")
     public String addRootCategory(Category category) {
@@ -57,4 +57,19 @@ public class CategoryController {
         map.addAttribute("c", c);
         return "forward:category_addchild.jsp";
     }
+
+    @RequestMapping("/back/modifyById.category")
+    public String modifyById(int id, ModelMap map) {
+        Category c = service.findById(id);
+        map.addAttribute("c", c);
+        return "forward:category_modify.jsp";
+    }
+
+    @RequestMapping("/back/modifyDesc.category")
+    public String modifyCategoryDesc(Category category) {
+        service.modifyCategoryDesc(category);
+        return "redirect:category_list.jsp";
+    }
+
+
 }

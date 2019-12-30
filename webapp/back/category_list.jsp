@@ -35,6 +35,13 @@
                    findToTree(categories);
                }
            });
+
+           // function resetDesc(id, desc) {
+           //     if(confirm("sure to change desc?")) {
+           //         window.location.href = "modifyDesc.category?id=" + id + "?desc=" + desc;
+           //     }
+           // }
+
            function findToTree(categories) {
                // 递归业务
                for (let i in categories) {
@@ -63,7 +70,7 @@
                                     "<ul class='dropdown-menu'>" +
                                         "<li>" +
                                             "<a href='findById.category?id="+c.id+"'>添加子类别</a>" +
-                                            "<a href='#'>修改</a>" +
+                                            "<a href='modifyById.category?id="+c.id+"'>修改</a>" +
                                             "<a href='#'>删除</a>" +
                                         "</li>" +
                                     "</ul>" +
@@ -148,6 +155,38 @@
                 </form>
             </div>
         </div>
+
+            <%-- 修改商品描述 --%>
+<%--        <div id="modifyCategoryDesc" class="modal hide fade">--%>
+<%--            <div class="modal-header">--%>
+<%--                <button type="button" data-dismiss="modal" aria-hidden="true"--%>
+<%--                        class="close">&times;</button>--%>
+<%--                <h3>添加根类别</h3>--%>
+<%--            </div>--%>
+<%--            <div class="modal-body">--%>
+<%--                <form class="form-horizontal" action="" method="post">--%>
+<%--                    <div class="control-group">--%>
+<%--                        <label for="inputEmail"  class="control-label">类别名称</label>--%>
+<%--                        <div class="controls">--%>
+<%--&lt;%&ndash;                            <input id="inputEmail" name="name" type="text" placeholder="请输根类别" />&ndash;%&gt;--%>
+<%--                            <span>${c.name }</span>--%>
+
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="control-group">--%>
+<%--                        <label for="inputCurrentPassword"  class="control-label">类别描述--%>
+<%--                        </label>--%>
+<%--                        <div class="controls">--%>
+<%--                            <textarea rows="5" cols="20" name="desc"></textarea>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="modal-footer">--%>
+<%--                        <a href="#" data-dismiss="modal" class="btn">关闭</a>--%>
+<%--                        <a href="javascript:;" onclick="resetDesc(id, desc)" />--%>
+<%--                    </div>--%>
+<%--                </form>--%>
+<%--            </div>--%>
+<%--        </div>--%>
     </div>
 </div>
 <%@include file="footer.jsp"%>

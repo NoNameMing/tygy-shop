@@ -34,4 +34,10 @@ public interface CategoryMapper {
     void updateParent(int pid);
 
     Category findById(int id);
+
+    /**
+     * 商品修改描述
+     * @param category
+     */
+    void modifyCategoryDesc(Category category);
 }
