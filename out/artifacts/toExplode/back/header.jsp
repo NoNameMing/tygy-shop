@@ -35,7 +35,7 @@
                             href="findAll.admin"><i class="batch stream"></i><br />管理员列表</a></li>
                     <li><a href="findAll.user"><i class="batch users"></i><br />用户列表</a></li>
                     <li><a href="findAll.category"><i class="batch forms"></i><br />类别列表</a></li>
-                    <li><a href="products.html"><i class="batch quill"></i><br />商品列表</a></li>
+                    <li><a href="findAll.product"><i class="batch quill"></i><br />商品列表</a></li>
                     <li><span class="label label-important pull-right">04</span><a
                             href="orders.html"><i class="batch plane"></i><br />订单列表</a></li>
                     <li><a href="anothers.html"><i class="batch calendar"></i><br />其它扩展功能</a></li>

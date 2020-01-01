@@ -96,7 +96,7 @@
                             </a></li>
                             <li id="product" class="collapse">
                                 <ul>
-                                    <li><a href="products.html"> <i
+                                    <li><a href="findAll.product"> <i
                                             class="pull-right icon-cog"></i>商品列表
                                     </a><a href="add_product.html"> <i class="pull-right icon-fire"></i>添加商品
                                     </a>

@@ -59,7 +59,7 @@
     </insert>
 
     <!-- 查询父级别的grade的值 -->
-    <select id="findByParentId" resultType="int">n
+    <select id="findByParentId" resultType="int">
         select grade from t_category where id = #{pid}
     </select>
     

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.shop.mapper.ProductMapper">
+
+    <!-- 表连接查询 t_product 与 t_category 进行连接 -->
+    <select id="findAll" resultMap="findAll">
+        select
+            p.id pid,
+            product_name pname,
+            product_description pdesc,
+            product_normalprice pnormalprice,
+            product_memberprice pmemberprice,
+            product_imgpath pimgpath,
+            product_date pdate,
+            product_categoryid pcid,
+            c.id cid,
+            category_name cname,
+            category_description cdesc,
+            category_parentId cpid,
+            leaf cleaf,
+            grade cgrade
+        from t_product p join t_category c
+        on p.product_categoryid = c.id
+    </select>
+
+    <!-- 配置数据表与实体类，使命名一致 -->
+    <resultMap id="findAll" type="com.neuedu.shop.pojo.Product">
+        <id column="pid" property="id" />
+        <result column="pname" property="name" />
+        <result column="pdesc" property="desc" />
+        <result column="pnormalprice" property="normalprice" />
+        <result column="pmemberprice" property="memberprice" />
+        <result column="pimgpath" property="imgpath" />
+        <result column="pdate" property="pdate" />
+        <association property="category" javaType="com.neuedu.shop.pojo.Category">
+            <id column="cid" property="id" />
+            <result column="cname" property="name" />
+            <result column="cdesc" property="desc" />
+            <result column="cpid" property="pid" />
+            <result column="cleaf" property="leaf" />
+            <result column="cgrade" property="grade" />
+        </association>
+    </resultMap>
+
+    <delete id="delete" parameterType="int">
+        delete from t_product where id=#{id}
+    </delete>
+    
+    <update id="update" parameterType="com.neuedu.shop.pojo.Product">
+        update t_product set product_name=#{name}, product_description=#{desc} where id=#{id}
+    </update>
+    
+    <select id="findById" parameterType="int" resultType="com.neuedu.shop.pojo.Product">
+        select
+            id,
+            product_name,
+            product_description,
+            product_normalprice,
+            product_memberprice,
+            product_imgpath,
+            product_date,
+            product_categoryid
+            from
+            t_product
+            where id=#{id}
+    </select>
+<!--    &lt;!&ndash; 添加方法的实现 &ndash;&gt;-->
+<!--    <insert id="insert" parameterType="com.neuedu.shop.pojo.User">-->
+<!--        insert into t_user-->
+<!--        values (null, #{name}, md5(#{password}), #{phone}, #{addr}, now())-->
+<!--    </insert>-->
+
+<!--    &lt;!&ndash; 删除用户 &ndash;&gt;-->
+<!--    <delete id="delete" parameterType="com.neuedu.shop.pojo.User">-->
+<!--        delete from t_user-->
+<!--        where id=#{id}-->
+<!--    </delete>-->
+
+<!--    &lt;!&ndash; 重置用户密码 &ndash;&gt;-->
+<!--    <update id="resetPassword" parameterType="com.neuedu.shop.pojo.User">-->
+<!--        update t_user-->
+<!--        set user_password=md5('000000')-->
+<!--        where id=#{id}-->
+<!--    </update>-->
+
+</mapper>

@@ -70,6 +70,4 @@ public class CategoryController {
         service.modifyCategoryDesc(category);
         return "redirect:category_list.jsp";
     }
-
-
 }
