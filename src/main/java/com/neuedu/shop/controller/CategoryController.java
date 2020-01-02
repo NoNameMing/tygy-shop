@@ -70,4 +70,12 @@ public class CategoryController {
         service.modifyCategoryDesc(category);
         return "redirect:category_list.jsp";
     }
+
+    @RequestMapping("/back/findThree.category")
+    @ResponseBody
+    public List<Category> findThree() {
+
+        return service.findThree();
+    }
+
 }

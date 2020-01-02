@@ -20,6 +20,8 @@ public class Product implements Serializable {
     private String imgpath;
     private Timestamp pdate; // 上架日期
 
+    private int categoryid;
+
     private Category category;
 
     public Product(String name, String desc, double normalprice, String imgpath, Category category) {

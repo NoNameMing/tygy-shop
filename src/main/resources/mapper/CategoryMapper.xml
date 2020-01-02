@@ -77,4 +77,9 @@
         set category_description=#{desc}
         where id=#{id}
     </update>
+
+    <select id="findThree" resultMap="findAll">
+        select id, category_name, category_description, category_parentId, leaf, grade
+        from t_category where grade=3
+    </select>
 </mapper>

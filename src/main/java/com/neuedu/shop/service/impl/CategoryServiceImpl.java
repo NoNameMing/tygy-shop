@@ -56,4 +56,9 @@ public class CategoryServiceImpl implements CategoryService {
     public void modifyCategoryDesc(Category category) {
         mapper.modifyCategoryDesc(category);
     }
+
+    @Override
+    public List<Category> findThree() {
+        return mapper.findThree();
+    }
 }

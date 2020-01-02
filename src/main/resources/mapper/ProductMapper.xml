@@ -4,8 +4,7 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.neuedu.shop.mapper.ProductMapper">
 
-    <!-- 表连接查询 t_product 与 t_category 进行连接 -->
-    <select id="findAll" resultMap="findAll">
+    <sql id="basesql" >
         select
             p.id pid,
             product_name pname,
@@ -23,6 +22,11 @@
             grade cgrade
         from t_product p join t_category c
         on p.product_categoryid = c.id
+    </sql>
+
+    <!-- 表连接查询 t_product 与 t_category 进行连接 -->
+    <select id="findAll" resultMap="findAll">
+        <include refid="basesql" />
     </select>
 
     <!-- 配置数据表与实体类，使命名一致 -->
@@ -49,40 +53,32 @@
     </delete>
     
     <update id="update" parameterType="com.neuedu.shop.pojo.Product">
-        update t_product set product_name=#{name}, product_description=#{desc} where id=#{id}
+        update
+            t_product
+        set
+            product_name=#{name},
+            product_description=#{desc},
+            product_normalprice=#{normalprice},
+            product_memberprice=#{memberprice},
+            product_categoryid=#{categoryid}
+         where
+            id=#{id}
     </update>
     
-    <select id="findById" parameterType="int" resultType="com.neuedu.shop.pojo.Product">
-        select
-            id,
-            product_name,
-            product_description,
-            product_normalprice,
-            product_memberprice,
-            product_imgpath,
-            product_date,
-            product_categoryid
-            from
-            t_product
-            where id=#{id}
+    <select id="findById" parameterType="int" resultMap="findAll">
+        <include refid="basesql" /> where p.id=#{id}
     </select>
-<!--    &lt;!&ndash; 添加方法的实现 &ndash;&gt;-->
-<!--    <insert id="insert" parameterType="com.neuedu.shop.pojo.User">-->
-<!--        insert into t_user-->
-<!--        values (null, #{name}, md5(#{password}), #{phone}, #{addr}, now())-->
-<!--    </insert>-->
 
-<!--    &lt;!&ndash; 删除用户 &ndash;&gt;-->
-<!--    <delete id="delete" parameterType="com.neuedu.shop.pojo.User">-->
-<!--        delete from t_user-->
-<!--        where id=#{id}-->
-<!--    </delete>-->
+    <!-- 添加新品 -->
+    <insert id="insert" parameterType="Product">
+        insert into t_product values(null, #{name}, #{desc}, #{normalprice}, #{memberprice}, #{imgpath}, now(), #{categoryid})
+    </insert>
 
-<!--    &lt;!&ndash; 重置用户密码 &ndash;&gt;-->
-<!--    <update id="resetPassword" parameterType="com.neuedu.shop.pojo.User">-->
-<!--        update t_user-->
-<!--        set user_password=md5('000000')-->
-<!--        where id=#{id}-->
-<!--    </update>-->
-
+    <select id="findByKeywords" parameterType="string" resultMap="findAll">
+        <include refid="basesql" />
+         where
+            p.product_name like concat('%',#{keywords},'%')
+         or
+            p.product_description like concat('%',#{keywords},'%')
+    </select>
 </mapper>

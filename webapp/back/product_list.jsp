@@ -22,6 +22,26 @@
     <script src="js/fullcalendar.min.js"></script>
     <script src="js/gcal.js"></script>
     <script src="js/setup.js"></script>
+    <script type="text/javascript">
+
+        $(function () {
+            // 异步访问
+            $.ajax({
+                url:"findThree.category",
+                dataType:"json",
+                success:function(categories){
+                    for (i=0;i<categories.length;i++) {
+                        var c  = categories[i];
+                        $("<option value='"+c.id+"'>" + c.name + "</option>").appendTo("#findThree");
+                    }
+                }
+            });
+            // 修改价格
+            $("#normalprice").blur(function () {
+                $("#memberprice").val(Math.round($(this).val()*.8*100.0)/100.0) ;
+            });
+        });
+    </script>
 </head>
 <body>
 <%@include file="header.jsp"%>
@@ -32,7 +52,7 @@
                 <div class="span12">
                     <a href="#newUserModal" data-toggle="modal" class="btn pull-right">添加新商品</a>
                     <h4 class="header">商品列表</h4>
-                    <form action="search_product_simple_complete.html" method="post">
+                    <form action="search.product" method="post">
                         <input type="text" name="keywords" class="form-control" placeholder="请输入搜索关键字">&nbsp;
                         <input class="btn btn-info" type="submit" value="搜索">
                     </form>
@@ -45,6 +65,7 @@
                             <th>普通价格</th>
                             <th>会员价格</th>
                             <th>上架日期</th>
+                            <th>商品图片</th>
                             <th>所属类别</th>
                         </tr>
                         </thead>
@@ -57,6 +78,7 @@
                                 <td>${p.normalprice }</td>
                                 <td>${p.memberprice }</td>
                                 <td>${p.pdate }</td>
+                                <td><img src="<%=path %>${p.imgpath }" /></td>
                                 <td>${p.category.name }</td>
                                 <td>
                                     <div class="btn-group">
@@ -66,6 +88,7 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li><a href="findById.product?id=${p.id}">修改</a>
+                                                <%-- <a href="update.product?id=${p.id}">修改</a> --%>
                                                 <a href="javascript:;" onclick="deleteProduct(${p.id})">删除</a>
                                             </li>
                                         </ul>
@@ -105,7 +128,7 @@
                 <h3>添加新商品</h3>
             </div>
             <div class="modal-body">
-                <form class="form-horizontal" action="add_product_do.jsp" method="post">
+                <form class="form-horizontal" action="insert.product" method="post" enctype="multipart/form-data">
                     <div class="control-group">
                         <label for="inputEmail"  class="control-label">商品名称</label>
                         <div class="controls">
@@ -116,7 +139,7 @@
                         <label for="inputCurrentPassword"  class="control-label">商品描述
                         </label>
                         <div class="controls">
-                            <input id="inputCurrentPassword" name="descr" type="text"
+                            <input id="inputCurrentPassword" name="desc" type="text"
                                    placeholder="请输入商品描述" />
                         </div>
                     </div>
@@ -133,18 +156,22 @@
                         </label>
                         <div class="controls">
                             <input id="memberprice" type="text"
-                                   placeholder="会员价格" />
+                                   placeholder="会员价格" name="memberprice"/>
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <label for="inputCurrentPassword" class="control-label">商品图片
+                        </label>
+                        <div class="controls">
+                            <input id="imgpath" type="file"
+                                   placeholder="图片" name="file"/>
                         </div>
                     </div>
                     <div class="control-group">
                         <label for="inputCurrentPassword" class="control-label">商品类别
                         </label>
                         <div class="controls">
-                            <select name="categoryid">
-
-                                <option value="1">电子产品</option>
-                                <option value="2">食品</option>
-                                <option value="3">服装</option>
+                            <select name="categoryid" id="findThree">
                             </select>
                         </div>
 

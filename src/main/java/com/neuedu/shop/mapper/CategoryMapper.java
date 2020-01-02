@@ -40,4 +40,9 @@ public interface CategoryMapper {
      * @param category
      */
     void modifyCategoryDesc(Category category);
+
+    /**
+     * 查询类别级别为3的所有类别
+     */
+    List<Category> findThree();
 }

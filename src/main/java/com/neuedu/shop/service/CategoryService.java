@@ -18,4 +18,6 @@ public interface CategoryService {
     Category findById(int id);
 
     void modifyCategoryDesc(Category category);
+
+    List<Category> findThree();
 }
