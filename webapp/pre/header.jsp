@@ -92,7 +92,7 @@
         </h1>
         <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
             <ul id="nav">
-                <li class="active"><a href="index.jsp" title="Home">首页</a></li>
+                <li class="active"><a href="lastedProduct.product" title="Home">首页</a></li>
                 <li class=""><a href="category.html" title="商品类别">商品类别</a>
                     <ul>
                         <li><a href="category.html">女装</a></li>

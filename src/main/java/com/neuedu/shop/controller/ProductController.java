@@ -60,4 +60,11 @@ public class ProductController {
         map.addAttribute("products", products);
         return "forward:product_search.jsp";
     }
+
+    @RequestMapping("/pre/lastedProduct.product")
+    public String lastedProduct(ModelMap map) {
+        List<Product> products = service.lastedProduct();
+        map.addAttribute("products", products);
+        return "forward:index.jsp";
+    }
 }

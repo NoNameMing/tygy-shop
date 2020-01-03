@@ -68,27 +68,29 @@ public class ProductServiceImpl implements ProductService {
                 e.printStackTrace();
             }
             // 保存数据库的路径
-            String imgpath = null;
+            String imgPath = null;
             // 把图片的相对路径保存至数据库
-            imgpath = "/images" + path.substring(path.lastIndexOf("/"));
-            product.setImgpath(imgpath);
+            imgPath = "/images" + path.substring(path.lastIndexOf("/"));
+            product.setImgpath(imgPath);
             mapper.insert(product);
             //存到Eclipse路径下-->文件拷贝
             // 本地也要存放上传的文件
             CommonUtil.fileCopyToLocal(path,
-                    "/Users/wangxiaoming/Desktop/shop/webapp"+imgpath);
+                    "/Users/wangxiaoming/Desktop/shop/webapp/back"+imgPath);
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
-
     }
 
     @Override
     public List<Product> findByKeywords(String keywords) {
         return mapper.findByKeywords(keywords);
+    }
+
+    @Override
+    public List<Product> lastedProduct() {
+        return mapper.lastedProduct();
     }
 }
 

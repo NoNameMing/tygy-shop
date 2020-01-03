@@ -215,161 +215,27 @@
             </div>
             <div class="new-product-block">
                 <ul class="product-grid">
-                    <li>
-                        <div class="pro-img">
-                            <img title="最新商品" alt="最新商品" src="images/zhaji.jpg" />
-                        </div>
-                        <div class="pro-content">
-                            <p>炸鸡腿</p>
-                        </div>
-                        <div class="pro-price">￥13.99</div>
-                        <div class="pro-btn-block">
-                            <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
-                            <a class="add-cart right quickCart inline"
-                               href="#quick-view-container" title="快速查看">快速查看</a>
-                        </div>
-                        <div class="pro-link-block">
-                            <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
-                            <a class="add-compare right" href="#" title="同类比较">同类比较</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="最新商品" alt="最新商品" src="images/zhaji.jpg" />
-                        </div>
-                        <div class="pro-content">
-                            <p>炸鸡腿</p>
-                        </div>
-                        <div class="pro-price">￥13.99</div>
-                        <div class="pro-btn-block">
-                            <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
-                            <a class="add-cart right quickCart inline"
-                               href="#quick-view-container" title="快速查看">快速查看</a>
-                        </div>
-                        <div class="pro-link-block">
-                            <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
-                            <a class="add-compare right" href="#" title="同类比较">同类比较</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="最新商品" alt="最新商品" src="images/zhaji.jpg" />
-                        </div>
-                        <div class="pro-content">
-                            <p>炸鸡腿</p>
-                        </div>
-                        <div class="pro-price">￥13.99</div>
-                        <div class="pro-btn-block">
-                            <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
-                            <a class="add-cart right quickCart inline"
-                               href="#quick-view-container" title="快速查看">快速查看</a>
-                        </div>
-                        <div class="pro-link-block">
-                            <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
-                            <a class="add-compare right" href="#" title="同类比较">同类比较</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="最新商品" alt="最新商品" src="images/zhaji.jpg" />
-                        </div>
-                        <div class="pro-content">
-                            <p>炸鸡腿</p>
-                        </div>
-                        <div class="pro-price">￥13.99</div>
-                        <div class="pro-btn-block">
-                            <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
-                            <a class="add-cart right quickCart inline"
-                               href="#quick-view-container" title="快速查看">快速查看</a>
-                        </div>
-                        <div class="pro-link-block">
-                            <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
-                            <a class="add-compare right" href="#" title="同类比较">同类比较</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-
-                </ul>
-                <ul class="product-grid">
-                    <li>
-                        <div class="pro-img">
-                            <img title="最新商品" alt="最新商品" src="images/zhaji.jpg" />
-                        </div>
-                        <div class="pro-content">
-                            <p>炸鸡腿</p>
-                        </div>
-                        <div class="pro-price">￥13.99</div>
-                        <div class="pro-btn-block">
-                            <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
-                            <a class="add-cart right quickCart inline"
-                               href="#quick-view-container" title="快速查看">快速查看</a>
-                        </div>
-                        <div class="pro-link-block">
-                            <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
-                            <a class="add-compare right" href="#" title="同类比较">同类比较</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="最新商品" alt="最新商品" src="images/zhaji.jpg" />
-                        </div>
-                        <div class="pro-content">
-                            <p>炸鸡腿</p>
-                        </div>
-                        <div class="pro-price">￥13.99</div>
-                        <div class="pro-btn-block">
-                            <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
-                            <a class="add-cart right quickCart inline"
-                               href="#quick-view-container" title="快速查看">快速查看</a>
-                        </div>
-                        <div class="pro-link-block">
-                            <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
-                            <a class="add-compare right" href="#" title="同类比较">同类比较</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="最新商品" alt="最新商品" src="images/zhaji.jpg" />
-                        </div>
-                        <div class="pro-content">
-                            <p>炸鸡腿</p>
-                        </div>
-                        <div class="pro-price">￥13.99</div>
-                        <div class="pro-btn-block">
-                            <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
-                            <a class="add-cart right quickCart inline"
-                               href="#quick-view-container" title="快速查看">快速查看</a>
-                        </div>
-                        <div class="pro-link-block">
-                            <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
-                            <a class="add-compare right" href="#" title="同类比较">同类比较</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="最新商品" alt="最新商品" src="images/zhaji.jpg" />
-                        </div>
-                        <div class="pro-content">
-                            <p>炸鸡腿</p>
-                        </div>
-                        <div class="pro-price">￥13.99</div>
-                        <div class="pro-btn-block">
-                            <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
-                            <a class="add-cart right quickCart inline"
-                               href="#quick-view-container" title="快速查看">快速查看</a>
-                        </div>
-                        <div class="pro-link-block">
-                            <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
-                            <a class="add-compare right" href="#" title="同类比较">同类比较</a>
-                            <div class="clearfix"></div>
-                        </div>
-                    </li>
+                    <c:forEach items="${products}" var="p">
+                        <li>
+                            <div class="pro-img">
+                                <img title="最新商品" alt="最新商品" src="<%=path %>${p.imgpath }" width="400"/>
+                            </div>
+                            <div class="pro-content">
+                                <p>${p.name}</p>
+                            </div>
+                            <div class="pro-price">${p.normalprice }</div>
+                            <div class="pro-btn-block">
+                                <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
+                                <a class="add-cart right quickCart inline"
+                                   href="#quick-view-container" title="快速查看">快速查看</a>
+                            </div>
+                            <div class="pro-link-block">
+                                <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
+                                <a class="add-compare right" href="#" title="同类比较">同类比较</a>
+                                <div class="clearfix"></div>
+                            </div>
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
             <div class="news-letter-container">

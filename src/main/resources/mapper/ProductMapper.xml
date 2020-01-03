@@ -81,4 +81,9 @@
          or
             p.product_description like concat('%',#{keywords},'%')
     </select>
+
+    <!-- 最新商品 -->
+    <select id="lastedProduct" resultMap="findAll">
+        <include refid="basesql" /> order by product_date desc
+    </select>
 </mapper>

@@ -20,4 +20,6 @@ public interface ProductService {
     void insert(Product product, CommonsMultipartFile file, HttpServletRequest request);
 
     List<Product> findByKeywords(String keywords);
+
+    List<Product > lastedProduct();
 }

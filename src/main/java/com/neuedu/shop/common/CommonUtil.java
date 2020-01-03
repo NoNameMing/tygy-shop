@@ -13,6 +13,7 @@ public class CommonUtil {
     public static void fileCopyToLocal(String srcPath,String descPath) {
         //JDK7 Files
         try {
+            System.out.println("嗨，你在哪？" + descPath);
             File src = new File(srcPath);
             File dest = new File(descPath);
             Files.copy(src.toPath(), dest.toPath());

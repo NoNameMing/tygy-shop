@@ -21,4 +21,6 @@ public interface ProductMapper {
     void insert(Product product);
 
     List<Product> findByKeywords(String keywords);
+
+    List<Product > lastedProduct();
 }
