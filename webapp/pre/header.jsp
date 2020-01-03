@@ -3,6 +3,25 @@
 <%
     String path = request.getContextPath();
 %>
+
+<script type="text/javascript">
+
+    $(function () {
+        // 异步访问
+        $.ajax({
+            url:"findThree.category",
+            dataType:"json",
+            success:function(categories){
+                for (i=0;i<categories.length;i++) {
+                    var c  = categories[i];
+                    $("<li>" + c.name + "</li>").appendTo("#findThree");
+                }
+            }
+        });
+    });
+
+</script>
+
 <div class="header-wrapper">
     <header class="container">
         <div class="head-right">
@@ -92,23 +111,23 @@
         </h1>
         <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
             <ul id="nav">
-                <li class="active"><a href="lastedProduct.product" title="Home">首页</a></li>
+                <li class="active"><a href="index.product" title="Home">首页</a></li>
                 <li class=""><a href="category.html" title="商品类别">商品类别</a>
-                    <ul>
-                        <li><a href="category.html">女装</a></li>
-                        <li><a href="category.html">男装</a></li>
-                        <li><a href="category.html">饰品</a></li>
-                        <li><a href="category.html">移动设备</a>
-                            <ul>
-                                <li><a href="category.html">二级类别</a></li>
-                                <li><a href="category.html">二级类别</a></li>
-                                <li><a href="category.html">二级类别</a></li>
-                                <li><a href="category.html">二级类别</a></li>
-                                <li><a href="category.html">二级类别</a></li>
-                                <li><a href="category.html">二级类别</a></li>
-                            </ul></li>
-                        <li><a href="category.html">鞋</a></li>
-                        <li><a href="category.html">其他</a></li>
+                    <ul id="findThree">
+<%--                        <li><a href="category.html">女装</a></li>--%>
+<%--                        <li><a href="category.html">男装</a></li>--%>
+<%--                        <li><a href="category.html">饰品</a></li>--%>
+<%--                        <li><a href="category.html">移动设备</a>--%>
+<%--                            <ul>--%>
+<%--                                <li><a href="category.html">二级类别</a></li>--%>
+<%--                                <li><a href="category.html">二级类别</a></li>--%>
+<%--                                <li><a href="category.html">二级类别</a></li>--%>
+<%--                                <li><a href="category.html">二级类别</a></li>--%>
+<%--                                <li><a href="category.html">二级类别</a></li>--%>
+<%--                                <li><a href="category.html">二级类别</a></li>--%>
+<%--                            </ul></li>--%>
+<%--                        <li><a href="category.html">鞋</a></li>--%>
+<%--                        <li><a href="category.html">其他</a></li>--%>
                     </ul></li>
                 <li class=""><a href="blog.html" title="博客">博客</a></li>
                 <li class=""><a href="faq.html" title="FAQ">FAQ</a></li>
@@ -125,7 +144,7 @@
             </h1>
             <div id="menuInnner" style="display: none;">
                 <ul class="accordion">
-                    <li class="active"><a href="index.jsp" title="主页">主页</a></li>
+                    <li class="active"><a href="detail.product" title="主页">主页</a></li>
                     <li class="parent"><a href="category.html" title="类别">类别</a>
                         <ul>
                             <li><a href="category.html">女装</a></li>

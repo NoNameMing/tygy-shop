@@ -17,6 +17,18 @@
     <script src="js/jquery.jcarousel.min.js"></script>
     <script src="js/jquery.accordion.js"></script>
     <script src="js/light_box.js"></script>
+
+    <style type="text/css">
+        /*#lastedProductsImg{*/
+        /*    margin: 60px 0px;*/
+        /*}*/
+        #detailedProductImg{
+            position: absolute;
+            right: 122px;
+            top: 8px;
+        }
+    </style>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $(".inline").colorbox({
@@ -81,133 +93,22 @@
             </div>
             <div class="feature-block">
                 <ul id="mix" class="product-grid">
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
+                    <c:forEach items="${rproducts }" var="p">
+                        <li>
+                            <div class="pro-img">
+                                <img title="推荐商品" alt="推荐商品" src="<%=path %>${p.imgpath}" />
                             </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
+                            <div class="pro-hover-block">
+                                <h4 class="pro-name">${p.name}</h4>
+                                <div class="link-block">
+                                    <a href="#quick-view-container" class="quickllook inline"
+                                       title="快速预览">快速预览</a> <a href="detail.product?id=${p.id }" class="quickproLink"
+                                                                title="商品链接">商品链接</a>
+                                </div>
+                                <div class="pro-price">${p.normalprice}</div>
                             </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
-                            </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
-                            </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
-                            </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
-                            </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
-                            </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
-                            </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="pro-img">
-                            <img title="推荐商品" alt="推荐商品" src="images/iPhoneX.jpg" />
-                        </div>
-                        <div class="pro-hover-block">
-                            <h4 class="pro-name">iPhone X</h4>
-                            <div class="link-block">
-                                <a href="#quick-view-container" class="quickllook inline"
-                                   title="快速预览">快速预览</a> <a href="view.html" class="quickproLink"
-                                                            title="商品链接">商品链接</a>
-                            </div>
-                            <div class="pro-price">￥8899.00</div>
-                        </div>
-                    </li>
-
+                        </li>
+                    </c:forEach>
                 </ul>
             </div>
             <div class="heading-block">
@@ -215,19 +116,19 @@
             </div>
             <div class="new-product-block">
                 <ul class="product-grid">
-                    <c:forEach items="${products}" var="p">
+                    <c:forEach items="${lproducts }" var="p">
                         <li>
                             <div class="pro-img">
-                                <img title="最新商品" alt="最新商品" src="<%=path %>${p.imgpath }" width="400"/>
+                                <img id="lastedProductsImg" title="最新商品" alt="最新商品" src="<%=path %>${p.imgpath }" width="400"/>
                             </div>
                             <div class="pro-content">
                                 <p>${p.name}</p>
                             </div>
-                            <div class="pro-price">${p.normalprice }</div>
+                            <div class="pro-price">¥${p.normalprice }</div>
                             <div class="pro-btn-block">
                                 <a class="add-cart left" href="#" title="Add to Cart">添加购物车</a>
                                 <a class="add-cart right quickCart inline"
-                                   href="#quick-view-container" title="快速查看">快速查看</a>
+                                   href="#quick-view-container${p.id }" title="快速查看">快速查看</a>
                             </div>
                             <div class="pro-link-block">
                                 <a class="add-wishlist left" href="#" title="Add to wishlist">收藏</a>
@@ -235,6 +136,78 @@
                                 <div class="clearfix"></div>
                             </div>
                         </li>
+                        <article style="display: none;">
+                            <section id="quick-view-container${p.id}" class="quick-view-wrapper">
+                                <div class="quick-view-container">
+                                    <div class="quick-view-left">
+                                        <h2>${p.name }</h2>
+                                        <div class="product-img-box">
+                                            <p class="product-image">
+                                                <img id="detailedProductImg" src="<%=path%>${p.imgpath}" title="${p.name }" alt="${p.name }"
+                                                     width="90" class="sale-img" /> <a href="view.html" title="Image"></a>
+                                            </p>
+                                            <ul class="thum-img">
+                                                <li><img src="<%=path%>${p.imgpath }" title="${p.name }" alt="" /></li>
+                                                <li><img src="<%=path%>${p.imgpath }" title="${p.name }" alt="" /></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="quick-view-right tabs">
+                                        <ul class="tab-block tabNavigation">
+                                            <li><a class="selected" title="Overview" href="#tabDetail">商品概述</a></li>
+                                            <li><a title="Description" href="#tabDes">商品描述</a></li>
+                                        </ul>
+                                        <div id="tabDetail" class="tabDetail">
+                                            <div class="first-review">快速查看商品</div>
+                                            <div class="price-box">
+                                                <span class="price">¥${p.normalprice}</span>
+                                            </div>
+                                            <div class="availability">In stock</div>
+                                            <div class="color-size-block">
+                                                <div class="label-row">
+                                                    <label><em>*</em> 颜色</label> <span class="required">* 必填项</span>
+                                                </div>
+                                                <div class="select-row">
+                                                    <select>
+                                                        <option>-- 请选择 --</option>
+                                                        <option>微微辣</option>
+                                                        <option>普通</option>
+                                                        <option>特辣</option>
+                                                    </select>
+                                                </div>
+                                                <div class="label-row">
+                                                    <label><em>*</em> 大小</label>
+                                                </div>
+                                                <div class="select-row">
+                                                    <select>
+                                                        <option>-- 请选择 --</option>
+                                                        <option>-- 小只--</option>
+                                                        <option>-- 中只 --</option>
+                                                        <option>-- 大只 --</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="add-to-cart-box">
+							<span class="qty-box"> <label for="qty">数量：</label> <a
+                                    class="prev" title="" href="#"><img alt="" title=""
+                                                                        src="images/qty_prev.png"></a> <input type="text" name="qty"
+                                                                                                              class="input-text qty" id="qty" maxlength="12" value="1">
+								<a class="next" title="" href="#"><img alt="" title=""
+                                                                       src="images/qty_next.png"></a>
+							</span>
+                                                <button title="添加购物车" class="form-button">
+                                                    <span>添加购物车</span>
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <div id="tabDes" class="tabDes">
+                                            <p>${p.desc }</p>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </section>
+                        </article>
                     </c:forEach>
                 </ul>
             </div>
@@ -266,79 +239,6 @@
         }).filter(':first').click();
     });
 </script>
-<article style="display: none;">
-    <section id="quick-view-container" class="quick-view-wrapper">
-        <div class="quick-view-container">
-            <div class="quick-view-left">
-                <h2>炸鸡腿</h2>
-                <div class="product-img-box">
-                    <p class="product-image">
-                        <img src="images/zhaji.jpg" title="炸鸡腿" alt="炸鸡腿"
-                             class="sale-img" /> <a href="view.html" title="Image"><img
-                            src="images/quick_view_img.png" title="Image" alt="Image" /></a>
-                    </p>
-                    <ul class="thum-img">
-                        <li><img src="images/quick_thum_img.png" title="" alt="" /></li>
-                        <li><img src="images/quick_thum_img.png" title="" alt="" /></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="quick-view-right tabs">
-                <ul class="tab-block tabNavigation">
-                    <li><a class="selected" title="Overview" href="#tabDetail">商品概述</a></li>
-                    <li><a title="Description" href="#tabDes">商品描述</a></li>
-                </ul>
-                <div id="tabDetail" class="tabDetail">
-                    <div class="first-review">快速查看商品</div>
-                    <div class="price-box">
-                        <span class="price">￥13.99</span>
-                    </div>
-                    <div class="availability">In stock</div>
-                    <div class="color-size-block">
-                        <div class="label-row">
-                            <label><em>*</em> 颜色</label> <span class="required">* 必填项</span>
-                        </div>
-                        <div class="select-row">
-                            <select>
-                                <option>-- 请选择 --</option>
-                                <option>微辣</option>
-                                <option>普通</option>
-                                <option>特辣</option>
-                            </select>
-                        </div>
-                        <div class="label-row">
-                            <label><em>*</em> 大小</label>
-                        </div>
-                        <div class="select-row">
-                            <select>
-                                <option>-- 请选择 --</option>
-                                <option>-- 小只--</option>
-                                <option>-- 中只 --</option>
-                                <option>-- 大只 --</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="add-to-cart-box">
-							<span class="qty-box"> <label for="qty">数量：</label> <a
-                                    class="prev" title="" href="#"><img alt="" title=""
-                                                                        src="images/qty_prev.png"></a> <input type="text" name="qty"
-                                                                                                              class="input-text qty" id="qty" maxlength="12" value="1">
-								<a class="next" title="" href="#"><img alt="" title=""
-                                                                       src="images/qty_next.png"></a>
-							</span>
-                        <button title="添加购物车" class="form-button">
-                            <span>添加购物车</span>
-                        </button>
-                    </div>
-                </div>
-                <div id="tabDes" class="tabDes">
-                    <p>要不要吃炸鸡腿</p>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </div>
-    </section>
-</article>
 <!--Quick view Block-->
 <!--页脚开始-->
 <section class="footer-wrapper">

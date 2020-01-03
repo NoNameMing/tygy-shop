@@ -61,10 +61,19 @@ public class ProductController {
         return "forward:product_search.jsp";
     }
 
-    @RequestMapping("/pre/lastedProduct.product")
+    @RequestMapping("/pre/index.product")
     public String lastedProduct(ModelMap map) {
-        List<Product> products = service.lastedProduct();
-        map.addAttribute("products", products);
+        List<Product> lproducts = service.lastedProduct();
+        List<Product> rproducts = service.findAll();
+        map.addAttribute("lproducts", lproducts);
+        map.addAttribute("rproducts", rproducts);
         return "forward:index.jsp";
+    }
+
+    @RequestMapping("/pre/detail.product")
+    public String productDetail(Integer id, ModelMap map) {
+        Product p = service.findById(id);
+        map.addAttribute("p", p);
+        return "forward:product_detail.jsp";
     }
 }

@@ -88,7 +88,6 @@
                                         </button>
                                         <ul class="dropdown-menu">
                                             <li><a href="findById.product?id=${p.id}">修改</a>
-                                                <%-- <a href="update.product?id=${p.id}">修改</a> --%>
                                                 <a href="javascript:;" onclick="deleteProduct(${p.id})">删除</a>
                                             </li>
                                         </ul>
