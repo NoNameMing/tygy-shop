@@ -16,4 +16,8 @@ public interface AdminService {
     void resetPassword(Integer id);
 
     void addAdmin(Admin admin);
+
+    Admin login(String name, String pwd);
+
+    int countAdmin();
 }

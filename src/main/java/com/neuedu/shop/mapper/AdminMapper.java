@@ -17,4 +17,10 @@ public interface AdminMapper {
     void resetPassword(Integer id);
 
     void addAdmin(Admin admin);
+
+    Admin login(String name, String pwd);
+
+    Admin findByName(String name);
+
+    int countAdmin();
 }

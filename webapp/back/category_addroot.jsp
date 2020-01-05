@@ -41,12 +41,15 @@
                             </thead>
                             <tbody>
                             <tr>
-                                <th>类别描述</th>
+                                <td>类别描述</td>
                                 <td><textarea rows="8" cols="40" name="desc"></textarea></td>
                             </tr>
                             <tr>
-                                <td rowspan="2"><input type="submit" value="添加"
-                                                       class="btn btn-primary" /></td>
+                                <td></td>
+                                <td>
+                                    <input class="btn btn-success" type="submit" value="添加" />&nbsp;&nbsp;&nbsp;
+                                    <input class="btn btn-danger" type="reset" value="重置">
+                                </td>
                             </tr>
                             </tbody>
                         </table>

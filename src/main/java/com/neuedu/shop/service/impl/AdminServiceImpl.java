@@ -9,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+import static com.neuedu.shop.common.CommonUtil.getMD5;
+
 @Service
 @Transactional
 public class AdminServiceImpl implements AdminService {
@@ -35,5 +37,21 @@ public class AdminServiceImpl implements AdminService {
     public void addAdmin(Admin admin) {
         adminMapper.addAdmin(admin);
     }
+
+    @Override
+    public Admin login(String name, String pwd) {
+        Admin admin = adminMapper.findByName(name);
+        if (admin != null && admin.getPassword().equals(getMD5(pwd))) {
+            return admin;
+        } else {
+            return null;
+        }
+    }
+
+    @Override
+    public int countAdmin() {
+        return adminMapper.countAdmin();
+    }
+
 
 }

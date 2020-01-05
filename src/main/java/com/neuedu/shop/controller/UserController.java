@@ -37,9 +37,10 @@ public class UserController {
         return "redirect:findAll.user";
     }
 
-    @RequestMapping("/back/deletes.user")
+    @RequestMapping("/back/delete.users")
     public String delete(Integer[] ids) {
         service.delete(ids);
+    log.error("删除验证：" + ids);
         return "redirect:findAll.user";
     }
 

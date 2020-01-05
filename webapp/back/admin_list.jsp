@@ -26,6 +26,11 @@
     <script src="js/fullcalendar.min.js"></script>
     <script src="js/gcal.js"></script>
     <script src="js/setup.js"></script>
+    <style type="text/css">
+        .err_admin_msg{
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <%@include file="header.jsp"%>
@@ -36,6 +41,7 @@
                 <div class="span12">
                     <a href="#newUserModal" data-toggle="modal" class="btn pull-right">添加管理员</a>
                     <h4 class="header">管理员列表</h4>
+                    <span class="err_admin_msg">${err_admin_msg }</span>
                     <table class="table table-striped sortable">
                         <thead>
                         <tr>

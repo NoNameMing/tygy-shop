@@ -25,17 +25,6 @@
     <script src="js/fullcalendar.min.js"></script>
     <script src="js/gcal.js"></script>
     <script src="js/setup.js"></script>
-    <script>
-        function logout(){
-            if(confirm('确认要注销么？')){
-                if(confirm('注销成功！')){
-                    window.location.href="login.html";
-                }else{
-                    alert('请三思');
-                }
-            }
-        }
-    </script>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
@@ -71,7 +60,7 @@
                                 <ul>
                                     <li><a href="findAll.user"> <i
                                             class="pull-right icon-signal"></i>用户列表
-                                    </a><a href="add_user.html"> <i class="pull-right icon-fire"></i>添加用户
+                                    </a><a href="user_add.jsp"> <i class="pull-right icon-fire"></i>添加用户
                                     </a></li>
                                 </ul>
                             </li>
@@ -98,7 +87,7 @@
                                 <ul>
                                     <li><a href="findAll.product"> <i
                                             class="pull-right icon-cog"></i>商品列表
-                                    </a><a href="add_product.html"> <i class="pull-right icon-fire"></i>添加商品
+                                    </a><a href="product_add.jsp"> <i class="pull-right icon-fire"></i>添加商品
                                     </a>
                                         <a href="search_product_complex.html"> <i class="pull-right icon-cog"></i>商品搜索（复杂）</a>
                                     </li>

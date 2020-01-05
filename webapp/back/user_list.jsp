@@ -1,3 +1,4 @@
+<%--<jsp:useBean id="user" scope="page" type="com.neuedu.shop.pojo.User"/>--%>
 <%@page contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
@@ -26,6 +27,21 @@
     <script src="js/fullcalendar.min.js"></script>
     <script src="js/gcal.js"></script>
     <script src="js/setup.js"></script>
+    <script type="text/javascript">
+        <%--function deleteUsers() {--%>
+        <%--    let ids = []; // 新建一个数组；--%>
+        <%--    if(confirm("delete?")) {--%>
+        <%--        if(confirm("real?")) {--%>
+        <%--            $(":checkbox").each(function(){ // 遍历 checkbox，看这一行是否被选中了--%>
+        <%--                if(this.checked === true){--%>
+        <%--                    &lt;%&ndash;alert(this.${user.id });&ndash;%&gt;--%>
+        <%--                }--%>
+        <%--            });--%>
+        <%--            window.location.href = "delete.users?ids=" + ids; // 传给后台，进行删除--%>
+        <%--        }--%>
+        <%--    }--%>
+        <%--}--%>
+    </script>
 </head>
 <body>
 <%@include file="header.jsp"%>
@@ -34,9 +50,9 @@
         <div class="container">
             <div class="row">
                 <div class="span12">
-                    <a href="#newUserModal" data-toggle="modal" class="btn btn-success pull-right">添加用户</a>
+                    <a href="#newUserModal" data-toggle="modal" class="btn pull-right">添加用户</a>
                     <h4 class="header">用户列表</h4>
-                    <button class="btn btn-success">批量删除</button>
+                    <button href="javascript:;" onclick="deleteUsers()">批量删除</button>
                     <table class="table table-striped sortable">
                         <thead>
                         <tr>
@@ -52,14 +68,13 @@
                         <tbody>
                         <c:forEach items="${users }" var="user">
                         <tr>
-                            <input id="uid" type="hidden" value="${user.id} "/>
-                            <th><input type="checkbox" name=""></th>
-                            <td>${user.id}</td>
-                            <td>${user.name}</td>
-                            <td>${user.password}</td>
-                            <td>${user.phone}</td>
-                            <td>${user.addr}<span class="label label-success">已发货</span></td>
-                            <td>${user.rdate}</td>
+                            <th><input type="checkbox" name="fff" value="${user.id }"></th>
+                            <td>${user.id }</td>
+                            <td>${user.name }</td>
+                            <td>${user.password }</td>
+                            <td>${user.phone }</td>
+                            <td>${user.addr }<span class="label label-success">已发货</span></td>
+                            <td>${user.rdate }</td>
                             <td>
                                 <div class="btn-group">
                                     <button class="btn">操作</button>
@@ -67,8 +82,8 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:;" onclick="resetPassword(${user.id})">重置密码</a>
-                                            <a href="javascript:;" onclick="deleteUser(${user.id})">删除</a></li>
+                                        <li><a href="javascript:;" onclick="resetPassword(${user.id })">重置密码</a>
+                                            <a href="javascript:;" onclick="deleteUser(${user.id })">删除</a></li>
                                     </ul>
                                     <script type="text/javascript">
                                         function deleteUser(id) {
@@ -81,6 +96,20 @@
                                         function resetPassword(id) {
                                             if(confirm("sure to change?")) {
                                                 window.location.href = "resetPassword.user?id=" + id;
+                                            }
+                                        }
+                                        function deleteUsers() {
+                                            let ids = []; // 新建一个数组；
+                                            if(confirm("delete?")) {
+                                                if(confirm("real?")) {
+                                                    $(":checkbox").each(function(){ // 遍历 checkbox，看这一行是否被选中了
+                                                        if(this.checked === true){
+                                                            // alert($(this).val());
+                                                            ids.push($(this).val());
+                                                        }
+                                                    });
+                                                    window.location.href = "delete.users?ids=" + ids; // 传给后台，进行删除
+                                                }
                                             }
                                         }
                                     </script>
