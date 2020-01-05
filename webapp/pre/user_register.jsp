@@ -17,6 +17,120 @@
     <script src="js/jquery.jcarousel.min.js"></script>
     <script src="js/jquery.accordion.js"></script>
     <script src="js/light_box.js"></script>
+
+    <script src="js/city.json.js"></script>
+    <script src="js/Popt.js"></script>
+    <script src="js/citySet.js"></script>
+
+    <%-- 送货地址的样式 --%>
+    <style type="text/css">
+        * {
+            word-wrap: break-word;
+        }
+        .wrap {
+            width: 100px;
+            height: 30px;
+            margin: 200px auto;
+            border: 0;
+            position: relative;
+        }
+
+        .input {
+            position: relative;
+            top: 0;
+            left: 0;
+            width: 180px;
+            margin: 0;
+            padding-left: 5px;
+            height: 30px;
+            line-height: 30px;
+            font-size: 12px;
+            border: 1px solid #c9cacb;
+        }
+
+        ._citys {
+            width: 450px;
+            display: inline-block;
+            border: 2px solid #eee;
+            padding: 5px;
+            position: relative;
+            background-color: #fefefe;
+        }
+
+        ._citys span {
+            color: #FE6732;
+            height: 15px;
+            width: 15px;
+            line-height: 15px;
+            text-align: center;
+            border-radius: 3px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            border: 1px solid #FE6732;
+            cursor: pointer;
+        }
+
+        ._citys0 {
+            width: 95%;
+            height: 34px;
+            line-height: 34px;
+            display: inline-block;
+            border-bottom: 2px solid #FE6732;
+            padding: 0px 5px;
+            font-size: 14px;
+            font-weight: bold;
+            margin-left: 6px;
+            color: #444;
+
+        }
+
+        ._citys0 li {
+            display: inline-block;
+            line-height: 34px;
+            font-size: 15px;
+            color: #888;
+            width: 80px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        ._citys1 {
+            width: 100%;
+            display: inline-block;
+            padding: 10px 0;
+        }
+
+        ._citys1 a {
+            width: 83px;
+            height: 35px;
+            display: inline-block;
+            background-color: #f5f5f5;
+            color: #666;
+            margin-left: 6px;
+            margin-top: 3px;
+            line-height: 35px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 12px;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        ._citys1 a:hover {
+            color: #fff;
+            background-color: #FE6732;
+        }
+
+        .AreaS {
+            background-color: #FE6732 !important;
+            color: #fff !important;
+        }
+        #addr2{
+            font-family: "微软雅黑";
+        }
+    </style>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $(".inline").colorbox({
@@ -85,10 +199,23 @@
                                 <div class="input-box">
                                     <label class="required" for="email_address">送货地址<em>*</em>
                                     </label>
-                                    <textarea rows="10"
-                                              class="input-text validate-email required-entry" cols="35"
-                                              name="addr" id="email_address" required="required"></textarea>
+<%--                                    <textarea rows="10"--%>
+<%--                                              class="input-text validate-email required-entry" cols="35"--%>
+<%--                                              name="addr" id="email_address" required="required"></textarea>--%>
+                                    <input class="input" id="city" type="text" placeholder="请选择"
+                                           autocomplete="off" readonly="true" />
+                                    <textarea class="input-text validate-email required-entry"
+                                            rows="10" cols="35" name="addr2"
+                                            id="addr2" placeholder="详细地址" required="required"></textarea>
                                 </div>
+                                <script type="text/javascript">
+                                    $("#button").click(function(){
+                                        alert($("#city").val() + "/" + $("#addr2").val());
+                                    });
+                                    $("#city").click(function(e) {
+                                        SelCity(this, e);
+                                    });
+                                </script>
                                 <div class="clear"></div>
                             </li>
                             <li class="control">

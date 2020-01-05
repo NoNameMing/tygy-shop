@@ -26,9 +26,11 @@ public class UserController {
     }
 
     @RequestMapping("/pre/register.user")
-    public String register(User user) {
+    public String register(User user, String hcity, String hproper, String harea, String addr2) {
+        if (hproper == null) hproper = "";
+        user.setAddr(hcity+hproper+harea+addr2);
         service.insert(user);
-        return "redirect:index.jsp";
+        return "redirect:index.product";
     }
 
     @RequestMapping("/back/delete.user")

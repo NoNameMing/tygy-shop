@@ -20,7 +20,7 @@
         <div class="row">
             <div class="span12">
                 <ul class="pull-right">
-                    <li><a href="<%=path%>/pre/user_register.jsp.jsp" target="_blank">前台用户注册</a></li>
+                    <li><a href="<%=path%>/pre/user_register.jsp" target="_blank">前台用户注册</a></li>
                     <li><a href="<%=path%>/pre/index.product" target="_blank">前台首页</a></li>
 <%--                    <li><a href="#">链接2</a></li>--%>
                     <li><a href="admin_login.jsp">登录</a></li>
