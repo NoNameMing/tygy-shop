@@ -82,4 +82,28 @@
         select id, category_name, category_description, category_parentId, leaf, grade
         from t_category where grade=3
     </select>
+
+    <!-- 1.统计孩子结点的个数，用做判断是否可以删除，找儿子的过程 -->
+    <select id="countChild" resultType="int">
+        select count(id)
+        from t_category
+        where category_parentId = #{id};
+    </select>
+
+    <!-- 3. 判断该类别的父类别是否需要更新，找父亲的过程 -->
+    <select id="judgeParentStatus" resultType="int">
+        select count(id) from t_category where category_parentId=#{pid}
+    </select>
+
+    <!-- 4. 删除后更新该商品的父类别 -->
+    <update id="updateParentAfterDelete" parameterType="int">
+        update t_category set leaf=1 where id=#{pid}
+    </update>
+
+    <!-- 删除类别 -->
+    <delete id="delete" parameterType="int">
+        delete from t_category where id = #{id}
+    </delete>
+
+
 </mapper>

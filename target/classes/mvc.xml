@@ -36,6 +36,30 @@
         </property>
     </bean>
 
-    <mvc:annotation-driven/>
+    <!-- 配置多个拦截器 -->
+    <mvc:interceptors>
+        <!-- 管理员后台拦截器 -->
+<!--        <bean class="com.neuedu.shop.interceptor.AdminInterceptor"/>-->
+            <mvc:interceptor>
+                <!-- 配置拦截器 -->
+                <mvc:mapping path="/**" />
+
+                <!-- 排除拦截器 -->
+                <mvc:exclude-mapping path="com.neuedu.shop.controller.CodeController" />
+                <mvc:exclude-mapping path="/back/code.code" />
+                <mvc:exclude-mapping path="/back/login.admin" />
+                <mvc:exclude-mapping path="/back/logout.admin" />
+                <mvc:exclude-mapping path="/back/css/**" />
+                <mvc:exclude-mapping path="/back/images/**" />
+                <mvc:exclude-mapping path="/back/img/**" />
+                <mvc:exclude-mapping path="/back/js/**" />
+                <mvc:exclude-mapping path="/back/laydate/**" />
+                <mvc:exclude-mapping path="/pre/**" />
+                <!-- 定义在 <mvc:interceptor> 下面的表示匹配指定路径的请求才进行拦截 -->
+                <bean class="com.neuedu.shop.interceptor.AdminInterceptor" />
+            </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:annotation-driven />
     <mvc:default-servlet-handler/>
 </beans>

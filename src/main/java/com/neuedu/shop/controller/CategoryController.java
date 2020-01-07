@@ -27,11 +27,16 @@ public class CategoryController {
         return "forward:category_list.jsp";
     }
 
-//    @RequestMapping("/back/delete.category")
-//    public String delete(Integer id) {
-//        service.delete(id);
-//        return "redirect:findAll.category";
-//    }
+    @RequestMapping("/back/delete.category")
+    public String delete(Integer id, ModelMap modelMap) {
+        int cnt = service.countChild(id); // 统计孩子的个数
+        if (cnt == 0) {
+            service.delete(id); // 无孩子可以删除
+        } else {
+            modelMap.addAttribute("category_err_msg", "请先删除此类别下的商品!");
+        }
+        return "redirect:findAll.category";
+    }
 
     @RequestMapping("/back/addRoot.category")
     public String addRootCategory(Category category) {

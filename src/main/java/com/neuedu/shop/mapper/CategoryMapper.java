@@ -45,4 +45,24 @@ public interface CategoryMapper {
      * 查询类别级别为3的所有类别
      */
     List<Category> findThree();
+
+    /**
+     * 查询该根类是否有子类
+     * @param id
+     * @return
+     */
+    int countChild(Integer id);
+
+    /**
+     * 判断该类别的父类别是否需要更新
+     * @param pid
+     * @return
+     */
+    int judgeParentStatus(Integer pid);
+
+    /**
+     * 更新父节点的叶子结点 status 为是
+     * @param pid
+     */
+    void updateParentAfterDelete(int pid);
 }

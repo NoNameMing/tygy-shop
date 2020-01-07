@@ -22,16 +22,26 @@
 
 </script>
 
+<script>
+    function logout(){
+        if(confirm('确认要注销么？')){
+            window.location.href="logout.user";
+        }
+    }
+</script>
+
 <div class="header-wrapper">
     <header class="container">
         <div class="head-right">
             <ul class="top-nav">
                 <li class=""><a href="404_error.html" title="我的账户">我的账户</a></li>
                 <li class="my-wishlist"><a href="404_error.html" title="我的收藏">我的收藏</a></li>
-                <li class="contact-us"><a href="contact_us.html" title="联系我们">联系我们</a></li>
-                <li class="checkout"><a href="404_error.html" title="付款">付款</a></li>
-                <li class="log-in"><a href="login.html" title="登录">登录</a></li>
-                <li class="log-in"><a href="<%=path%>/back/index.jsp" title="后台首页">后台首页</a></li>
+<%--                <li class="contact-us"><a href="contact_us.html" title="联系我们">联系我们</a></li>--%>
+                <li class="contact"><a href="javascript:void(0);" onclick="logout()">注销</a></li>
+                <li class="checkout"><a href="findByUserId.cartitem?userid=${user.id }" title="我的购物车">我的购物车</a></li>
+                <li class="log-in"><a href="user_login.jsp" title="登录">登录</a></li>
+                <li class="log-in"><a href="user_register.jsp" title="登录">注册</a></li>
+                <li class="log-in"><a href="<%=path%>/back/logout.admin" title="后台首页">后台首页</a></li>
             </ul>
             <ul class="currencyBox">
                 <li id="header_currancy" class="currency"><a

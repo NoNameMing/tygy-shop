@@ -37,6 +37,8 @@
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
+    <!-- 拦截器配置 -->
+
     <!-- 由全局监听器加载Spring的配置文件 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>

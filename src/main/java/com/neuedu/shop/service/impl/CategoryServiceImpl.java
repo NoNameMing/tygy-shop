@@ -23,6 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public void delete(Integer id) {
+
         mapper.delete(id);
     }
 
@@ -60,5 +61,10 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public List<Category> findThree() {
         return mapper.findThree();
+    }
+
+    @Override
+    public int countChild(Integer id) {
+        return mapper.countChild(id);
     }
 }

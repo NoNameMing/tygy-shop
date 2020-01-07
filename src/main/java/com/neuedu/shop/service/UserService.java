@@ -15,5 +15,7 @@ public interface UserService {
 
     void resetPassword(Integer id);
 
+    User login(String name,String pwd);
+
 //    void addUser(User user);
 }

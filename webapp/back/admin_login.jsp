@@ -46,9 +46,7 @@
         <div class="row">
             <div class="span12">
                 <ul class="pull-right">
-                    <li><a href="#">Link1</a></li>
-                    <li><a href="#">Link2</a></li>
-                    <li><a href="#">Link3</a></li>
+                    <li><a href="<%=request.getContextPath() %>/pre/index.product">前台首页</a></li>
                     <li><a href="admin_login.jsp">登录</a></li>
                 </ul>
                 <h4>
@@ -92,8 +90,6 @@
                             <a href="javascript:;" id="code"><img src="code.code" id="img">看不清，换一个</a><br />
                             <span class="err_msg">${code_msg }</span>
                         </div>
-
-
                     </div>
                     <div class="control-group">
                         <div class="controls">

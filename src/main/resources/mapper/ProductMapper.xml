@@ -69,6 +69,11 @@
         <include refid="basesql" /> where p.id=#{id}
     </select>
 
+    <!-- 2. 判断该类别下是否有商品 -->
+    <select id="findByParentId" parameterType="int" resultType="int">
+        select count(id) from t_product where product_categoryid=#{id}
+    </select>
+
     <!-- 添加新品 -->
     <insert id="insert" parameterType="Product">
         insert into t_product values(null, #{name}, #{desc}, #{normalprice}, #{memberprice}, #{imgpath}, now(), #{categoryid})

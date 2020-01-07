@@ -39,6 +39,9 @@
         where id=#{id}
     </update>
 
+    <select id="findByName" parameterType="string" resultMap="findAll">
+        select id,user_name,user_password from t_user where user_name=#{name}
+    </select>
 <!--    &lt;!&ndash; 后台添加一个用户 &ndash;&gt;-->
 <!--    <insert id="addUser" parameterType="com.neuedu.shop.pojo.User">-->
 <!--        insert into t_user-->

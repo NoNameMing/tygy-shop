@@ -20,4 +20,8 @@ public interface AdminService {
     Admin login(String name, String pwd);
 
     int countAdmin();
+
+    void update(Admin admin);
+
+    Admin findById(Integer id);
 }

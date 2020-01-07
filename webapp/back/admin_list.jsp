@@ -64,9 +64,10 @@
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu">
-                                        <li><a href="javascript:;" onclick="resetPassword(${admin.id})">重置密码</a>
-                                            <a href="update_admin.html">修改</a>
-                                            <a href="javascript:;" onclick="deleteAdmin(${admin.id})">删除</a></li>
+                                        <li><a href="javascript:;" onclick="resetPassword(${admin.id })">重置密码</a>
+                                            <a href="findById.admin?id=${admin.id }">修改</a>
+                                            <a href="javascript:;" onclick="deleteAdmin(${admin.id })">删除</a>
+                                        </li>
                                     </ul>
                                     <script type="text/javascript">
                                         function deleteAdmin(id) {

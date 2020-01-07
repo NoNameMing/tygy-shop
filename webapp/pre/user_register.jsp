@@ -7,21 +7,6 @@
     <meta charset="utf-8">
     <title>电商平台用户注册页面</title>
 
-    <!--js-->
-    <script src="js/jquery-1.8.2.min.js"></script>
-    <script src="js/common.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/ddsmoothmenu.js"></script>
-    <script src="js/jquery.flexslider.js"></script>
-    <script src="js/jquery.elastislide.js"></script>
-    <script src="js/jquery.jcarousel.min.js"></script>
-    <script src="js/jquery.accordion.js"></script>
-    <script src="js/light_box.js"></script>
-
-    <script src="js/city.json.js"></script>
-    <script src="js/Popt.js"></script>
-    <script src="js/citySet.js"></script>
-
     <%-- 送货地址的样式 --%>
     <style type="text/css">
         * {
@@ -131,6 +116,55 @@
         }
     </style>
 
+    <!--js-->
+    <script src="js/jquery-1.8.2.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/ddsmoothmenu.js"></script>
+    <script src="js/jquery.flexslider.js"></script>
+    <script src="js/jquery.elastislide.js"></script>
+    <script src="js/jquery.jcarousel.min.js"></script>
+    <script src="js/jquery.accordion.js"></script>
+    <script src="js/light_box.js"></script>
+
+    <script src="js/city.json.js"></script>
+    <script src="js/Popt.js"></script>
+    <script src="js/citySet.js"></script>
+    <script src="js/format.js"></script>
+
+    <script type="text/javascript">
+        $(function(){
+            $("#validatePassword").click(function(){
+                var pwd = document.getElementById("password").value;
+                var rpwd = document.getElementById("confirmPassword").value;
+                var name = document.getElementById("name").value;
+                var relName = "^[a-zA-Z$_][a-zA-Z0-9]{7,15}$";
+                var relPwd = "^[A-Z][a-zA-Z0-9_]{7,15}$";
+                if(pwd == rpwd){
+                    if(name.match(relName)){
+                        if(pwd.match(relPwd)){
+                            if (YZPhone) {
+                                return true;
+                            } else {
+                                window.alert("手机格式不正确！");
+                                return false;
+                            }
+                        }else{
+                            window.alert("密码格式不正确！");
+                            return false;
+                        }
+                    }else{
+                        window.alert("用户名格式不正确！");
+                        return false;
+                    }
+                }else{
+                    window.alert("两次输入的密码不一致！");
+                    return false;
+                }
+            });
+        });
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $(".inline").colorbox({
@@ -138,6 +172,18 @@
                 width : "50%"
             });
         });
+        // $(function(){
+        //     $("#validatePassword").click(function(){
+        //         var pwd1 = document.getElementById("password").value;
+        //         var pwd2 = document.getElementById("confirmPassword").value;
+        //         if(pwd1 != pwd2){
+        //             window.alert("两次输入的新密码不一致！");
+        //             confirmPassword.focus();
+        //             return false;
+        //         }
+        //         return true;
+        //     });
+        // });
     </script>
     <!--end js-->
 
@@ -176,10 +222,12 @@
                             <li class="fields">
                                 <div class="customer-name">
                                     <div class="input-box name-firstname">
-                                        <label for="firstname">用户名<em>*</em></label> <input
-                                            type="text" class="required-entry input-text" title="用户名"
-                                            placeholder="请输入用户名" name="name" id="firstname" required="required">
+                                        <label for="name">用户名<em>*</em></label>
+                                        <input type="text" class="required-entry input-text" title="用户名" onblur="YZname()"
+                                            placeholder="请输入用户名" name="name" id="name" required="required" />
                                     </div>
+                                    <br>
+                                    <span id="name_span" />
                                     <div class="clear"></div>
 
                                 </div>
@@ -187,10 +235,12 @@
                             <li class="fields">
                                 <div class="customer-name">
                                     <div class="input-box name-firstname">
-                                        <label for="firstname">电话<em>*</em></label> <input
-                                            type="text" class="required-entry input-text" title="电话"
-                                            placeholder="请输入电话号码" name="phone" id="firstname" required="required">
+                                        <label for="phone">电话<em>*</em></label> <input
+                                            type="text" class="required-entry input-text" title="电话" onblur="YZPhone()"
+                                            placeholder="请输入电话号码" name="phone" id="phone" required="required">
                                     </div>
+                                    <br>
+                                    <span id="phone_span" />
                                     <div class="clear"></div>
 
                                 </div>
@@ -232,14 +282,18 @@
                             <li class="fields">
                                 <div class="customer-name">
                                     <div class="input-box name-firstname">
-                                        <label for="pwd1">密码<em>*</em></label> <input
-                                            type="password" class="required-entry input-text" title="密码"
-                                            placeholder="请输入密码" name="password" id="pwd1" required="required">
+                                        <label for="password">密码<em>*</em></label>
+                                        <input type="password" class="required-entry input-text" title="密码" onblur="YanZ()"
+                                            placeholder="请输入密码" name="password" id="password" required="required">
+                                        <br>
+                                        <span id="password_span" />
                                     </div>
                                     <div class="input-box name-lastname">
-                                        <label for="pwd2">确认密码<em>*</em></label> <input
-                                            type="password" class="required-entry input-text"
-                                            title="确认密码" placeholder="请再次输入密码" id="pwd2" required="required">
+                                        <label for="confirmPassword">确认密码<em>*</em></label>
+                                        <input type="password" class="required-entry input-text" name="confirmPassword" onblur="YanZ()"
+                                            title="确认密码" placeholder="请再次输入密码" id="confirmPassword" required="required">
+                                        <br>
+                                        <span id="confirmPassword_span" />
                                     </div>
                                     <div class="clear"></div>
                                 </div>
@@ -248,7 +302,8 @@
                         <div class="buttons-set">
                             <p class="required">* 必填项</p>
                             <a href="account_login.html" title="返回" class="f-left">&laquo;
-                                返回</a> <input type="submit" value="注册" class="orange-btn" />
+                                返回</a>
+                            <input type="submit" value="注册" class="orange-btn" id="validatePassword"/>
                             <div class="clear"></div>
                         </div>
                     </div>

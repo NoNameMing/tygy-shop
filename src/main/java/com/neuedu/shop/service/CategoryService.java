@@ -20,4 +20,6 @@ public interface CategoryService {
     void modifyCategoryDesc(Category category);
 
     List<Category> findThree();
+
+    int countChild(Integer id);
 }

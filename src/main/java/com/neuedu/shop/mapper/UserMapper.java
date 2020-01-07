@@ -17,4 +17,6 @@ public interface UserMapper {
     void resetPassword(Integer id);
 
 //    boolean addUser(User user);
+
+    User findByName(String name);
 }

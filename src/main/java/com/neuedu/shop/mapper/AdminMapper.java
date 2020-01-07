@@ -23,4 +23,8 @@ public interface AdminMapper {
     Admin findByName(String name);
 
     int countAdmin();
+
+    void update(Admin admin);
+
+    Admin findById(Integer id);
 }

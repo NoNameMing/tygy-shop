@@ -5,7 +5,7 @@
 <mapper namespace="com.neuedu.shop.mapper.AdminMapper">
     <!-- find方法的实现 -->
     <select id="findAll" resultMap="findAll">
-        select id, admin_name, admin_password
+        select id, admin_name, admin_password, admin_level
         from t_admin
     </select>
     <!-- 配置数据表与实体类，使命名一致 -->
@@ -13,6 +13,7 @@
         <id column="id" property="id" />
         <result column="admin_name" property="name" />
         <result column="admin_password" property="password" />
+        <result column="admin_level" property="level" />
     </resultMap>
 
     <delete id="delete" parameterType="com.neuedu.shop.pojo.Admin">
@@ -25,15 +26,22 @@
         set admin_password=md5('admin')
         where id=#{id}
     </update>
-    
+
+    <!-- 更新 -->
+    <update id="update" parameterType="com.neuedu.shop.pojo.Admin">
+        update t_admin
+        set admin_password=md5(#{password})
+        where id=#{id}
+    </update>
+
     <insert id="addAdmin" parameterType="com.neuedu.shop.pojo.Admin">
         insert into t_admin
-        values (null, #{name}, md5(#{password}))
+        values (null, #{name}, md5(#{password}), '0')
     </insert>
 
     <!-- 验证登陆 -->
     <select id="findByName" parameterType="string" resultMap="findAll">
-        select id, admin_name, admin_password
+        select id, admin_name, admin_password, admin_level
         from t_admin
         where admin_name=#{name}
     </select>
@@ -41,5 +49,12 @@
     <!-- 统计 admin 个数 -->
     <select id="countAdmin" resultType="int">
         SELECT count(id) FROM t_admin
+    </select>
+
+    <!-- 查找 -->
+    <select id="findById" parameterType="int" resultMap="findAll">
+        select id, admin_name, admin_password, admin_level
+        from t_admin
+        where id=#{id}
     </select>
 </mapper>

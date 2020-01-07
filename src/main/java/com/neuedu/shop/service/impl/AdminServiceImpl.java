@@ -53,5 +53,15 @@ public class AdminServiceImpl implements AdminService {
         return adminMapper.countAdmin();
     }
 
+    @Override
+    public void update(Admin admin) {
+        adminMapper.update(admin);
+    }
+
+    @Override
+    public Admin findById(Integer id) {
+        return adminMapper.findById(id);
+    }
+
 
 }

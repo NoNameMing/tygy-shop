@@ -1,6 +1,15 @@
+<%@ page import="com.neuedu.shop.pojo.Admin" %>
 <%@page contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%String path = request.getContextPath();%>
+<%
+    Admin admin = (Admin) session.getAttribute("admin");
+    if (admin == null) {
+        // 挑战到登陆页面去登陆
+        response.sendRedirect("admin_login.jsp");
+        return;
+    }
+    String path = request.getContextPath();
+%>
 <!-- header -->
 
 <script>
@@ -25,7 +34,16 @@
 <%--                    <li><a href="#">链接2</a></li>--%>
                     <li><a href="admin_login.jsp">登录</a></li>
                     <li><a href="javascript:void(0);" onclick="logout()">注销</a></li>
-                    <li><span>欢迎${admin.name }</span></li>
+                    <li>
+                        <c:choose>
+                            <c:when test="${admin != null}">
+                                <span>欢迎${admin.name }</span>
+                            </c:when>
+                            <c:otherwise>
+                                <span>请您登陆</span>
+                            </c:otherwise>
+                        </c:choose>
+                    </li>
                     <%--                    <li><a href="regist.html">管理员注册</a></li>--%>
                 </ul>
                 <h4>
