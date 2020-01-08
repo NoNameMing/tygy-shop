@@ -67,9 +67,9 @@
                     <li><a href="findAll.category"><i class="batch forms"></i><br />类别列表</a></li>
                     <li><a href="findAll.product"><i class="batch quill"></i><br />商品列表</a></li>
                     <li><span class="label label-important pull-right">04</span><a
-                            href="orders.html"><i class="batch plane"></i><br />订单列表</a></li>
-                    <li><a href="anothers.html"><i class="batch calendar"></i><br />其它扩展功能</a></li>
-                    <li><a href="settings.html"><i class="batch settings"></i><br />系统设置</a></li>
+                            href="findAll.order"><i class="batch plane"></i><br />订单列表</a></li>
+                    <li><a href=""><i class="batch calendar"></i><br />其它扩展功能</a></li>
+                    <li><a href=""><i class="batch settings"></i><br />系统设置</a></li>
                 </ul>
             </div>
         </div>

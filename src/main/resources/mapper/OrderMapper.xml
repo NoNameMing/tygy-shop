@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.neuedu.shop.mapper.OrderMapper">
+
+    <sql id="baseSQL">
+        select
+            sl.id clid,
+            userid,
+            order_id,
+            addr,
+            odate,
+            status,
+            ci.id ciid,
+            user_id,
+            product_id,
+            product_count,
+            memberprice,
+            item_date,
+            u.id uid,
+            user_name,
+            user_password,
+            user_phone,
+            user_addr,
+            user_register_date,
+            p.id pid,
+            product_name pname,
+            product_description pdesc,
+            product_normalprice pnormalprice,
+            product_memberprice pmemberprice,
+            product_imgpath pimgpath,
+            product_date pdate,
+            product_categoryid pcid,
+            c.id cid,
+            category_name cname,
+            category_description cdesc,
+            category_parentId cpid,
+            leaf cleaf,
+            grade cgrade
+        from t_salesorder sl
+        join t_cartitem ci on ci.user_id = sl.userid
+        join t_user u on ci.user_id = u.id
+        join t_product p on ci.product_id=p.id
+        join t_category c on p.product_categoryid = c.id
+    </sql>
+
+    <!-- findAll -->
+    <select id="findAll" resultMap="selectOrder">
+        <include refid="baseSQL" />
+    </select>
+
+    <!-- 配置resultMap -->
+    <resultMap type="Order" id="selectOrder">
+        <id column="clid" property="id" />
+        <result column="userid" property="uid" />
+        <result column="order_id" property="oid" />
+        <result column="addr" property="addr" />
+        <result column="odate" property="odate" />
+        <result column="status" property="status" />
+        <association property="cartitem" javaType="com.neuedu.shop.pojo.CartItem">
+            <id property="id" column="ciid" javaType="java.lang.Integer" />
+            <result property="pcount" column="product_count" />
+            <result property="itemDate" column="item_date" />
+            <result property="memberprice" column="memberprice" />
+            <association property="user" javaType="com.neuedu.shop.pojo.User">
+                <id column="id" property="id" />
+                <result column="user_name" property="name" />
+                <result column="user_password" property="password" />
+                <result column="user_phone" property="phone" />
+                <result column="user_addr" property="addr" />
+                <result column="user_register_date" property="rdate" />
+            </association>
+            <association property="product" javaType="com.neuedu.shop.pojo.Product">
+                <id column="pid" property="id" />
+                <result column="pname" property="name" />
+                <result column="pdesc" property="desc" />
+                <result column="pnormalprice" property="normalprice" />
+                <result column="pmemberprice" property="memberprice" />
+                <result column="pimgpath" property="imgpath" />
+                <result column="pdate" property="pdate" />
+                <association property="category" javaType="com.neuedu.shop.pojo.Category">
+                    <id column="cid" property="id" />
+                    <result column="cname" property="name" />
+                    <result column="cdesc" property="desc" />
+                    <result column="cpid" property="pid" />
+                    <result column="cleaf" property="leaf" />
+                    <result column="cgrade" property="grade" />
+                </association>
+            </association>
+        </association>
+    </resultMap>
+
+</mapper>

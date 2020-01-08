@@ -55,7 +55,7 @@
         <result property="itemDate" column="item_date" />
         <result property="memberprice" column="memberprice" />
         <association property="user" javaType="com.neuedu.shop.pojo.User">
-            <id column="id" property="id" />
+            <id column="uid" property="id" />
             <result column="user_name" property="name" />
             <result column="user_password" property="password" />
             <result column="user_phone" property="phone" />
@@ -85,4 +85,10 @@
     <insert id="insert" parameterType="CartItem">
         insert into t_cartitem values(null,#{userid}, #{productid}, #{pcount}, #{memberprice}, now())
     </insert>
+
+    <update id="update" parameterType="CartItem">
+        update t_cartitem
+        set product_count=#{pcount}
+        where user_id=#{user.id} and product_id=#{product.id}
+    </update>
 </mapper>

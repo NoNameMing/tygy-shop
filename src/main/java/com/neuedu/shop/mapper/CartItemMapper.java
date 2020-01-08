@@ -26,4 +26,9 @@ public interface CartItemMapper {
      */
     List<CartItem> findByUserId(Integer userId);
 
+    /**
+     * 更新购物车数量
+     * @param cartItem
+     */
+    void update(CartItem cartItem);
 }
