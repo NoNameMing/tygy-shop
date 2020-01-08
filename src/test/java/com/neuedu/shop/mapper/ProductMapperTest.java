@@ -15,10 +15,8 @@ public class ProductMapperTest extends BaseTest {
 
     @Test
     public void findById() {
-        Product product = mapper.findById(3);
-        String name = product.getName();
-        String desc = product.getDesc();
-        System.out.println(product.getName());
+        Product product = mapper.findById(14);
+        System.out.println(product);
     }
 
     @Test
@@ -28,5 +26,12 @@ public class ProductMapperTest extends BaseTest {
         product.setDesc("HELLO");
         product.setName("TEST");
         mapper.update(product);
+    }
+
+    @Test
+    public void countByParentId() {
+        Product product = mapper.findById(14);
+        System.out.println(product.getCategory().getId());
+        System.out.println(mapper.countByParentId(product.getCategory().getId()));
     }
 }

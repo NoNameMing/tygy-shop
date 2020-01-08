@@ -92,5 +92,14 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> lastedProduct() {
         return mapper.lastedProduct();
     }
+
+    @Override
+    public boolean ifHasProduct(Integer parentid) {
+        if (mapper.countByParentId(parentid) != 0) {
+            return true;
+        }
+        return false;
+    }
+
 }
 

@@ -127,7 +127,7 @@
                             <div class="pro-price">¥${p.normalprice }</div>
                             <div class="pro-btn-block">
                                 <a class="add-cart left"
-                                   href="insert.cartitem?userid=${user.id }&productid=${p.id}&memberprice=${p.memberprice}"
+                                   href="insert.cartitem?userid=${user.id }&productid=${p.id}&memberprice=${p.memberprice}&pcount=1"
                                    title="Add to Cart">添加购物车</a>
                                 <a class="add-cart right quickCart inline"
                                    href="#quick-view-container${p.id }" title="快速查看">快速查看</a>

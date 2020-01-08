@@ -12,3 +12,6 @@ select count(id) from t_category where category_parentId=#{pid}
 
 -- 4. 需要更新的话，更新该商品的父类别的 叶子结点 字段
 update t_category set leaf=1 where id=#{pid}
+
+
+-- 根据子类别找父类别

@@ -70,8 +70,8 @@
     </select>
 
     <!-- 2. 判断该类别下是否有商品 -->
-    <select id="findByParentId" parameterType="int" resultType="int">
-        select count(id) from t_product where product_categoryid=#{id}
+    <select id="countByParentId" parameterType="int" resultType="int">
+        select count(id) from t_product where product_categoryid=#{categoryid}
     </select>
 
     <!-- 添加新品 -->
@@ -91,4 +91,6 @@
     <select id="lastedProduct" resultMap="findAll">
         <include refid="basesql" /> order by product_date desc
     </select>
+
+
 </mapper>

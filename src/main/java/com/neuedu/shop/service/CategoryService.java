@@ -22,4 +22,8 @@ public interface CategoryService {
     List<Category> findThree();
 
     int countChild(Integer id);
+
+    boolean judgeParentStatus(Integer pid);
+
+    void updateParentAfterDelete(int pid);
 }

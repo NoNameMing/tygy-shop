@@ -23,6 +23,14 @@ public class CartItemServiceImpl implements CartItemService {
 
     @Override
     public void insert(CartItem cartItem) {
+        List<CartItem> cartItems = findByUserId(cartItem.getUserid());
+        for (CartItem c : cartItems) {
+            if (c.getProductid().equals(cartItem.getProductid())) {
+                c.setPcount(c.getPcount() + cartItem.getPcount());
+                return;
+            }
+        }
+        // 如果不是，再加新的
         mapper.insert(cartItem);
     }
 }

@@ -21,7 +21,7 @@ public class CategoryMapperTest extends BaseTest {
     }
 
     @Test
-    public void testUpdateLeaf() {
+    public void testUpdateLeaf() { // 两个升级步骤，第三、第四步
         categoryMapper.updateParent(15); // 设为非叶子结点
         Category category = categoryMapper.findById(15);
         System.out.println("测试设为非叶子结点功能，false就成功了：" + category.isLeaf());

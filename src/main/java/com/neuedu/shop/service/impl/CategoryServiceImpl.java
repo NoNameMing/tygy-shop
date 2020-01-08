@@ -67,4 +67,17 @@ public class CategoryServiceImpl implements CategoryService {
     public int countChild(Integer id) {
         return mapper.countChild(id);
     }
+
+    @Override
+    public boolean judgeParentStatus(Integer pid) {
+        if(mapper.judgeParentStatus(pid) == 1) {
+            return true;
+        }
+        return false;
+    }
+
+    @Override
+    public void updateParentAfterDelete(int pid) {
+        mapper.updateParentAfterDelete(pid);
+    }
 }

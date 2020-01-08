@@ -22,4 +22,7 @@ public interface ProductService {
     List<Product> findByKeywords(String keywords);
 
     List<Product > lastedProduct();
+
+    boolean ifHasProduct(Integer parentid);
+
 }

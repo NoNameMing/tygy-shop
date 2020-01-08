@@ -26,6 +26,7 @@
     <script type="text/javascript">
         // js 显示数据
         $(function () {
+
             // 异步请求
            $.ajax({
                url:"findToTree.category",
@@ -35,12 +36,6 @@
                    findToTree(categories);
                }
            });
-
-           // function resetDesc(id, desc) {
-           //     if(confirm("sure to change desc?")) {
-           //         window.location.href = "modifyDesc.category?id=" + id + "?desc=" + desc;
-           //     }
-           // }
 
            function findToTree(categories) {
                // 递归业务
@@ -71,7 +66,7 @@
                                         "<li>" +
                                             "<a href='findById.category?id="+c.id+"'>添加子类别</a>" +
                                             "<a href='modifyById.category?id="+c.id+"'>修改</a>" +
-                                            "<a href='#'>删除</a>" +
+                                            "<a href='delete.category?id="+c.id+"'>删除</a>" +
                                         "</li>" +
                                     "</ul>" +
                                 "</div>" +
@@ -87,6 +82,12 @@
            }
         });
     </script>
+
+    <style type="text/css">
+        .category_msg{
+            color: red;
+        }
+    </style>
 </head>
 <body>
 <!-- header部分 -->
@@ -98,6 +99,7 @@
                 <div class="span12">
                     <a href="#newUserModal" data-toggle="modal" class="btn pull-right">添加根类别</a>
                     <h4 class="header">类别列表</h4>
+                    <span class="category_msg">${category_msg }</span>
                     <table class="table table-striped sortable">
                         <thead>
                         <tr>

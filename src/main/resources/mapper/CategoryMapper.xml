@@ -55,7 +55,7 @@
     
     <!-- 添加子类别 -->
     <insert id="addChildCategory" parameterType="Category">
-        insert into t_category values(null, #{name}, #{desc}, #{pid}, #{leaf}, #{grade})
+        insert into t_category values(null, #{name}, #{desc}, #{pid}, true, #{grade})
     </insert>
 
     <!-- 查询父级别的grade的值 -->

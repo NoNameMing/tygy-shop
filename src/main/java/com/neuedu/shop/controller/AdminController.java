@@ -102,21 +102,20 @@ public class AdminController {
             int adminNum = service.countAdmin();
             Admin adminCheck = (Admin) session.getAttribute("admin");
             if (adminCheck.getLevel() == 1) {
-                 if (adminNum >= 5){
+                if (adminNum >= 5){
                     modelMap.addAttribute("err_admin_msg", "管理员人数已达上限，无法添加！");
-                    return "forward:findAll.admin";
                 } else {
                     service.addAdmin(admin);
-                    return "redirect:findAll.admin";
+                     modelMap.addAttribute("err_admin_msg", "添加成功！");
                 }
             } else {
                 modelMap.addAttribute("err_admin_msg", "请勿尝试越权添加操作");
-                return "forward:findAll.admin";
             }
+            return "forward:findAll.admin";
         } catch (Exception e) {
             modelMap.addAttribute("err_admin_msg", "session 信息错误");
             log.error(e);
-            return "redirect:findAll.admin";
+            return "forward:findAll.admin";
         }
     }
 
