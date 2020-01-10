@@ -29,6 +29,24 @@
         }
     </style>
 
+
+    <script type="text/javascript">
+        // 获取 url 中的订单号
+        $(function(){
+            alert("hi");
+            var out_trade_no = getUrlParam("out_trade_no");
+            if (out_trade_no != "") {
+               window.alert("您订单号为：" + out_trade_no + "的订单已支付成功");
+            }
+        });
+
+        function getUrlParam(name){
+            var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+            var r = window.location.search.substr(1).match(reg);
+            if (r!=null) return unescape(r[2]); return null;
+        };
+    </script>
+
     <script type="text/javascript">
         $(document).ready(function() {
             $(".inline").colorbox({
@@ -37,6 +55,7 @@
             });
         });
     </script>
+
     <!--end js-->
 
     <!-- Mobile Specific Metas ================================================== -->
