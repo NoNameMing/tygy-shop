@@ -11,4 +11,10 @@ public interface OrderMapper {
      * 查询所有订单的方法
      */
     List<Order> findAll();
+
+    /**
+     * 建立一个新订单
+     * @param order
+     */
+    void insert(Order order);
 }

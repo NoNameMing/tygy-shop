@@ -1,6 +1,8 @@
 package com.neuedu.shop.service.impl;
 
+import com.neuedu.shop.common.OrderUtil;
 import com.neuedu.shop.mapper.OrderMapper;
+import com.neuedu.shop.pojo.Order;
 import com.neuedu.shop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +18,16 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List findAll() {
         return mapper.findAll();
+    }
+
+    @Override
+    public void insert(Order order) {
+        order.setOid(OrderUtil.generateOrder());
+        mapper.insert(order);
+    }
+
+    @Override
+    public Order getOrderById(String orderId) {
+        return null;
     }
 }

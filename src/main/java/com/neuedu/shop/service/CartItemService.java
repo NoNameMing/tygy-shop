@@ -2,6 +2,7 @@ package com.neuedu.shop.service;
 
 import com.neuedu.shop.pojo.CartItem;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 public interface CartItemService {
@@ -17,4 +18,17 @@ public interface CartItemService {
      * @param cartItem
      */
     void insert(CartItem cartItem);
+
+    /**
+     * 从购物车中删除信息
+     * @param cartItem
+     */
+    void delete(CartItem cartItem, HttpSession session);
+
+    /**
+     * 更新购物车数量
+     *
+     */
+    void update(CartItem cartItem);
+
 }

@@ -91,4 +91,8 @@
         </association>
     </resultMap>
 
+    <insert id="insert" parameterType="Order">
+        insert into t_salesorder values (null, #{uid}, #{oid}, #{addr}, now(), 0)
+    </insert>
+
 </mapper>

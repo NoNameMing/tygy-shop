@@ -23,7 +23,7 @@ public class Order implements Serializable {
 
     private Integer uid; // 用户id
 
-    private Integer oid; // 订单id
+    private String oid; // 订单id
 
     private String addr; // 订单地址
 

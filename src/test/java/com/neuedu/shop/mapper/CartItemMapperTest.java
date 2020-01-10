@@ -13,7 +13,7 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @Transactional
-//@Rollback(false)
+@Rollback(false)
 public class CartItemMapperTest extends BaseTest {
 
     @Autowired
@@ -47,5 +47,13 @@ public class CartItemMapperTest extends BaseTest {
                 System.out.println("更新后的商品：" + cartItem.getPcount());
             }
         }
+    }
+
+    @Test
+    public void updateNum() {
+        CartItem cartItem = new CartItem();
+        cartItem.setId(32);
+        cartItem.setPcount(2);
+        mapper.updateNum(cartItem);
     }
 }

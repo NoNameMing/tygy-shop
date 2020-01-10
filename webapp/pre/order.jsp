@@ -1,5 +1,5 @@
-
-
+<%@page contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,8 +42,8 @@
     <link rel="stylesheet" href="css/light_box.css" />
     <script src="js/html5.js"></script>
 
-    <link rel="stylesheet" href="tasp.css" />
-    <link href="orderconfirm.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/tasp.css" />
+    <link href="css/orderconfirm.css" rel="stylesheet" />
 
     <style>
         #page {

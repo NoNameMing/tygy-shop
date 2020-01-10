@@ -1,6 +1,7 @@
 package com.neuedu.shop.mapper;
 
 import com.neuedu.shop.BaseTest;
+import com.neuedu.shop.common.OrderUtil;
 import com.neuedu.shop.pojo.Order;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,5 +19,12 @@ public class OrderMapperTest extends BaseTest {
     public void findAll() {
         List<Order> list = mapper.findAll();
         System.out.println("查到的订单：" + list);
+    }
+
+    @Test
+    public void insert() {
+        Order order = new Order();
+        order.setOid(OrderUtil.generateOrder());
+        mapper.insert(order);
     }
 }

@@ -31,4 +31,16 @@ public interface CartItemMapper {
      * @param cartItem
      */
     void update(CartItem cartItem);
+
+    /**
+     * 删除订单
+     * @param cartItem
+     */
+    void delete(CartItem cartItem);
+
+    /**
+     * 更新购物车数量
+     * @param cartItem
+     */
+    void updateNum(CartItem cartItem);
 }

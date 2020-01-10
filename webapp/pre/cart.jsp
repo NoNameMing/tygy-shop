@@ -25,6 +25,9 @@
         });
 
     </script>
+
+
+
     <!--end js-->
 
     <!-- Mobile Specific Metas ================================================== -->
@@ -56,24 +59,96 @@
         <div class="content-container container">
             <div class="col-1-layout">
                 <c:forEach items="${items}" var="ci">
-                    <ul class="shopping-cart-table">
+                    <form class="shopping-cart-table">
                         <li>
                             <div class="img-box">
                                 <img src="images/cart_img.png" title="" alt="" />
-                            </div> <a class="edit-btn" href="#" title="编辑">编辑</a>
+                            </div> <a class="edit-btn" href="#" title="编辑">${ci.product.name}</a>
                         </li>
                         <li>
                             <div class="remove-item-btn">
-                                <a href="#" title="Remove"><img
-                                        src="images/delete_item_btn.png" title="删除" alt="删除" /></a>
+                                <a href="delete.cartitem?id=${ci.id}" title="Remove">
+                                    <img src="images/delete_item_btn.png" title="删除" alt="删除" />
+                                </a>
                             </div>
-                            <div class="pro-name">${ci.product.name}</div>
-                            <div class="pro-qty">
-                                <input type="text" value="1" />
+                            <div class="add-to-cart-box">
+                                <span class="qty-box"> <label>购买数量：</label>
+                                    <span>${ci.pcount }</span>
+                                    <input type="hidden" value="${ci.id}" id="id" name="id" />
+                                    <a>
+                                        <a onclick="update(${ci.id}, document.getElementById('${ci.id}qty').value)">提交修改</a>
+                                        <script>
+                                            function update(id, cnt) {
+                                                window.location.href="update.cartitem?id=" + id + "&" + "cnt=" + cnt;
+                                            }
+                                        </script>
+                                    </a>
+                                </span>
                             </div>
+                            <div>
+                                    <%--                                --%>
+                                <input type="text" id="${ci.id}qty" name="qty" value="${ci.pcount}"/>
+                            </div>
+                                <script type="text/javascript">
+                                    jQuery(document).ready(function() {
+                                        jQuery(".ajax").colorbox();
+                                    });
+
+                                    jQuery(function() {
+                                        jQuery(".add")
+                                            .click(
+                                                function() {
+                                                    var jQueryadd = jQuery(this);
+                                                    var oldValue = jQueryadd
+                                                        .parent()
+                                                        .find(
+                                                            "input")
+                                                        .val();
+                                                    var newVal = 1;
+
+                                                    if (jQueryadd
+                                                        .text() == "") {
+                                                        newVal = parseFloat(oldValue) + 1;
+                                                    }
+                                                    jQueryadd
+                                                        .parent()
+                                                        .find(
+                                                            "input")
+                                                        .val(
+                                                            newVal);
+                                                });
+
+                                        jQuery(".jian")
+                                            .click(
+                                                function() {
+                                                    var jQueryadd = jQuery(this);
+                                                    var oldValue = jQueryadd
+                                                        .parent()
+                                                        .find(
+                                                            "input")
+                                                        .val();
+                                                    var newVal = 1;
+
+                                                    if (jQueryadd
+                                                        .text() == "") {
+                                                        newVal = parseFloat(oldValue) - 2;
+                                                    }
+                                                    if (newVal <= 0) {
+                                                        newVal = 1;
+                                                    }
+                                                    jQueryadd
+                                                        .parent()
+                                                        .find(
+                                                            "input")
+                                                        .val(
+                                                            newVal);
+                                                });
+
+                                    });
+                                </script>
                             <div class="pro-price">¥${ci.memberprice }</div>
                         </li>
-                    </ul>
+                    </form>
                 </c:forEach>
             </div>
         </div>

@@ -86,9 +86,22 @@
         insert into t_cartitem values(null,#{userid}, #{productid}, #{pcount}, #{memberprice}, now())
     </insert>
 
+
     <update id="update" parameterType="CartItem">
         update t_cartitem
         set product_count=#{pcount}
         where user_id=#{user.id} and product_id=#{product.id}
     </update>
+
+    <update id="updateNum" parameterType="int">
+        update t_cartitem
+        set product_count=#{pcount}
+        where id=#{id}
+    </update>
+
+    <delete id="delete" parameterType="CartItem">
+        delete
+        from t_cartitem
+        where id=#{id}
+    </delete>
 </mapper>

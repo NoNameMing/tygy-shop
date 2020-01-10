@@ -2,12 +2,14 @@ package com.neuedu.shop.service.impl;
 
 import com.neuedu.shop.mapper.CartItemMapper;
 import com.neuedu.shop.pojo.CartItem;
+import com.neuedu.shop.pojo.User;
 import com.neuedu.shop.service.CartItemService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Service
@@ -42,4 +44,17 @@ public class CartItemServiceImpl implements CartItemService {
         }
 
     }
+
+    @Override
+    public void delete(CartItem cartItem, HttpSession session) {
+        User user = (User) session.getAttribute("user");
+        mapper.delete(cartItem);
+    }
+
+    @Override
+    public void update(CartItem cartItem) {
+        mapper.updateNum(cartItem);
+    }
+
+
 }
