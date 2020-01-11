@@ -28,4 +28,6 @@ public class CartItem implements Serializable {
     private double memberprice;
 
     private Timestamp itemDate; // 添加购物车的时间
+
+    private double aDouble;
 }

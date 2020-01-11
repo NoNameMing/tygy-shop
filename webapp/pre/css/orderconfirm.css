@@ -216,7 +216,7 @@ input[type=text]:focus,textarea:focus {
 }
 .label-error {
 	background-color:#FFF2E9;
-	border:1px solid #F60;
+	border:1px solid #009933;
 	margin:5px 0 0;
 	padding:0 5px;
 	display:inline-block;
@@ -345,7 +345,7 @@ input[type=text]:focus,textarea:focus {
 	*zoom:1
 }
 .tm-bubble .title {
-	color:#f60
+	color:#009933
 }
 
 .payAnother-tip {
@@ -500,7 +500,7 @@ input[type=text]:focus,textarea:focus {
 	position:absolute;
 	top:0;
 	left:30px;
-	color:#F50;
+	color:#009933;
 	font-weight:700;
 	display:none;
 	_height:24px;
@@ -672,9 +672,9 @@ input[type=text]:focus,textarea:focus {
 	-moz-box-shadow:none;
 	-webkit-box-shadow:none;
 	box-shadow:none;
-	border-color:#fca700;
+	border-color:#009933;
 	right:0;
-	background-color:#ffebcc
+	background-color:#009933
 }
 
 .order-table .insure label,.order-table .insure input,.insure .fare-insure .price,.order-table .insure-tip .price {

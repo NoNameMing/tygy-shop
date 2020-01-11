@@ -265,7 +265,7 @@
                                                                                           style="display: none">，服务费</span>)：
                             <span
                                     class='price g_price '> <span>&yen;</span><em
-                                    class="style-middle-bold-red J_ShopTotal">${amount }</em>
+                                    class="style-middle-bold-red J_ShopTotal">${amount - 30 }</em>
 								</span> <input type="hidden" name="1704508670:2|creditcard"
                                                value="false"/> <input type="hidden" id="J_IsLadderGroup"
                                                                       name="isLadderGroup" value="false"/>

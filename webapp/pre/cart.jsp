@@ -119,7 +119,7 @@
 <%--                <input class="submit-btn" type="submit" value="Submit" title="Submit" />--%>
 <%--            </div>--%>
             <div class="news-letter-block">
-                <a href="insert.order?uid=${user.id}&addr=${user.addr}&productid=${ci.product.id }&ciid=${ci.id}&pname=${ci.product.name}&pcount=${ci.pcount}&pmemberprice=${ci.product.memberprice}" id="${ci.id}" >
+                <a href="insert.order?uid=${user.id}&addr=${user.addr}" id="${ci.id}" >
                     下单
                 </a>
             </div>

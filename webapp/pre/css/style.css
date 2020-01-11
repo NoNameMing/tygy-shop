@@ -153,13 +153,13 @@ p.lead {
 	font-size: 1.8rem;
 }
 a {
-	color: #d04526;
+	color: #009933;
 	text-decoration: none;
 	outline: 0;
 	line-height: inherit;
 }
 a:hover {
-	color: #c03d20;
+	color: #009933;
 }
 p a, p a:visited {
 	line-height: inherit;
@@ -773,7 +773,7 @@ header {
 	position:relative;
 }
 .currencyBox {
-    background: url("../images/drop.png") no-repeat scroll right 14px #FE6732;
+    background: url("../images/drop.png") no-repeat scroll right 14px #009933;
     border: medium none;
     color: #FFFFFF;
     cursor: pointer;
@@ -787,17 +787,17 @@ header {
     float: left;
     margin-right: 1px;
     padding: 5px 13px;
-	color:#FE6732;
+	color:#009933;
 }
 .currencyBox .currency_detial a:hover {
-    background: none repeat scroll 0 0 #FE6732;
+    background: none repeat scroll 0 0 #009933;
     color: #FFFFFF;
     text-decoration: none;
 }
 .currencyBox a{color:#fff; font-size:11px;}
 .currency_detial {
     background: none repeat scroll 0 0 #F5F5F5;
-    border-bottom: 3px solid #FE6732;
+    border-bottom: 3px solid #009933;
     display: none;
     padding: 15px 19px;
     position: absolute;
@@ -956,7 +956,7 @@ header {
 	margin-left:1px;
 }
 .flex-direction-nav li:hover a.flex-prev, .flex-direction-nav li:hover a.flex-next {
-	background-color:#FE6732;
+	background-color:#009933;
 }
 .banner-wrapper .banner-block .banner-add {
 	float:right;
@@ -1127,7 +1127,7 @@ header {
 	text-align:center;
 }
 .quickllook {
-    background: url("../images/iconsPro.png") no-repeat scroll left top #FE6732;
+    background: url("../images/iconsPro.png") no-repeat scroll left top #009933;
     border: 0 none;
     color: #FFFFFF;
     display: inline-block !important;
@@ -1485,10 +1485,10 @@ ul.form-list li label.required {
 	width:100%;
 }
 ul.form-list li label em {
-	color:#EB340A;
+	color:#009933;
 }
 .account-login .content p.required {
-	color:#EB340A;
+	color:#009933;
 	text-align:right;
 }
 .buttons-set {
@@ -1520,7 +1520,7 @@ ul.form-list li input[type='checkbox'] {
 	vertical-align:middle;
 }
 .fieldset .buttons-set .required {
-	color:#EB340A;
+	color:#009933;
 	text-align:right;
 	margin:0px 0px 10px;
 }
@@ -1950,11 +1950,11 @@ ul.form-list li input[type='checkbox'] {
 	float:left;
 }
 .main .product-info-box .product-shop .color-size-block .label-row label em, .quick-view-right .color-size-block .label-row label em {
-	color:#f00;
+	color:#009933;
 }
 .main .product-info-box .product-shop .color-size-block .label-row .required, .quick-view-right .color-size-block .label-row .required {
 	float:right;
-	color:#EB340A;
+	color:#009933;
 }
 .main .product-info-box .product-shop .color-size-block .select-row, .quick-view-right .color-size-block .select-row {
 	float:left;
@@ -2356,7 +2356,7 @@ h1.page-title {
 	vertical-align:top;
 }
 .contact-form-container .form-fields li label em {
-	color:#f00;
+	color:#009933;
 }
 .contact-form-container .form-fields li input {
 	display:inline-block;
@@ -2391,7 +2391,7 @@ h1.page-title {
 .button-set .required {
 	text-align:right;
 	vertical-align:top;
-	color:#EB340A;
+	color:#009933;
 	font-size:11px;
 	margin-bottom:13px;
 }
@@ -2534,7 +2534,7 @@ h1.page-title {
 	padding-bottom:2px;
 }
 .shopping-cart-collaterals .cart-box .box-content ul li label em {
-	color:#f00;
+	color:#009933;
 }
 .shopping-cart-collaterals .cart-box .box-content ul li select {
 	width:270px;

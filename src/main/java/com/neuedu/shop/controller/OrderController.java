@@ -80,6 +80,7 @@ public class OrderController {
 
         for (CartItem item : items) {
             amount += item.getPcount() * item.getMemberprice();
+            item.setADouble(item.getPcount() * item.getMemberprice());
         }
 
         map.addAttribute("amount", amount); // 存入 购物车信息

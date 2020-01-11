@@ -43,13 +43,6 @@
                 <li class="log-in"><a href="user_register.jsp" title="登录">注册</a></li>
                 <li class="log-in"><a href="<%=path%>/back/logout.admin" title="后台首页">后台首页</a></li>
             </ul>
-            <ul class="currencyBox">
-                <li id="header_currancy" class="currency"><a
-                        class="mainCurrency" href="#">币种: RMB</a>
-                    <div id="currancyBox" class="currency_detial">
-                        <a href="#">￥</a> <a href="#"></a> <a href="#">$</a>
-                    </div></li>
-            </ul>
             <section class="header-bottom">
                 <div class="cart-block">
                     <ul>
@@ -115,8 +108,8 @@
             </section>
         </div>
         <h1 class="logo">
-            <a href="index.jsp" title="Logo"> <img title="Logo"
-                                                    alt="Logo" src="images/logo.jpg" />
+            <a href="index.jsp" title="Logos"> <img title="Logo"
+                                                    alt="Logo" src="images/logo4.jpg" />
             </a>
         </h1>
         <nav id="smoothmenu1" class="ddsmoothmenu mainMenu">
