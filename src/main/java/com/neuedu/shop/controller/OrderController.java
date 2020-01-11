@@ -8,11 +8,17 @@ import com.alipay.api.request.AlipayTradePagePayRequest;
 import com.alipay.api.response.AlipayTradePagePayResponse;
 import com.neuedu.shop.common.AlipayConfig;
 import com.neuedu.shop.common.OrderUtil;
+import com.neuedu.shop.pojo.CartItem;
 import com.neuedu.shop.pojo.Order;
 import com.neuedu.shop.pojo.Product;
+import com.neuedu.shop.pojo.User;
+import com.neuedu.shop.service.CartItemService;
 import com.neuedu.shop.service.OrderService;
+import com.neuedu.shop.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
+import org.aspectj.weaver.ast.Or;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
@@ -25,7 +31,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.*;
 
-import static com.alipay.api.AlipayConstants.SIGN_TYPE;
 import static redis.clients.jedis.Protocol.CHARSET;
 
 @Controller
@@ -36,6 +41,17 @@ public class OrderController {
     @Autowired
     private OrderService service;
 
+    @Autowired
+    private ProductService productService;
+
+    @Autowired
+    private CartItemService cartItemService;
+
+    /**
+     * 后台订单列表
+     * @param modelMap
+     * @return
+     */
     @RequestMapping("/back/findAll.order")
     public String findAll(ModelMap modelMap) {
         List<Order> orders = service.findAll();
@@ -43,15 +59,41 @@ public class OrderController {
         return "forward:order_list.jsp";
     }
 
+    /**
+     * 确认信息以下单
+     * @param order
+     * @return
+     */
     @RequestMapping("/pre/insert.order")
-    public String insert(Order order) {
-        service.insert(order);
-        return "forward:pay.order";
+    public String insert(Order order, ModelMap map, HttpSession session) {
+        String oid = OrderUtil.generateOrder(); // 生成订单号
+        order.setOid(oid);
+        service.insert(order); // 插入数据
+        Order order1 = service.findOrderById(oid); // 找到数据
+        map.addAttribute("order", order1); // 存入 order 信息
+
+        User user = (User) session.getAttribute("user");
+        List<CartItem> items = cartItemService.findByUserId(user.getId());
+        map.addAttribute("items", items); // 存入 购物车信息
+
+        double amount = 0.0;
+
+        for (CartItem item : items) {
+            amount += item.getPcount() * item.getMemberprice();
+        }
+
+        map.addAttribute("amount", amount); // 存入 购物车信息
+        return "forward:user_order.jsp";
     }
 
+    /**
+     * 支付请求
+     * @param httpResponse
+     * @throws Exception
+     */
     @RequestMapping("/pre/pay.order")
     @ResponseBody
-    public void goAlipay(HttpServletResponse httpResponse) throws Exception {
+    public void goAlipay(HttpServletResponse httpResponse, HttpServletRequest request) throws Exception {
 
         // 1. 初始化SDK
         AlipayClient alipayClient = new DefaultAlipayClient(AlipayConfig.gatewayUrl, AlipayConfig.app_id, AlipayConfig.merchant_private_key,"json", AlipayConfig.charset, AlipayConfig.alipay_public_key, AlipayConfig.sign_type);
@@ -60,13 +102,13 @@ public class OrderController {
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
 
         // 订单号，必填，测试用
-        String out_trade_no = OrderUtil.generateOrder();
+        String out_trade_no = request.getParameter("order_id");
 
         // 订单标题，必填，测试用
-        String subject = "nonameming测试支付宝支付";
+        String subject = "果蔬平台交易" + request.getParameter("order_id");
 
         // 总金额，必填，测试用
-        String total_amount =Integer.toString(new Random().nextInt(99)+100);
+        String total_amount = request.getParameter("amount");
 
         // 设置请求参数
         alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
@@ -97,10 +139,18 @@ public class OrderController {
         httpResponse.getWriter().write(form);// 直接将完整的表单html输出到页面
         httpResponse.getWriter().flush();
         httpResponse.getWriter().close();
-
-
     }
 
+
+
+    /**
+     * 支付相应
+     * @param request
+     * @param response
+     * @return
+     * @throws IOException
+     * @throws AlipayApiException
+     */
     @RequestMapping("/pre/return_url")
     public String returnUrl(HttpServletRequest request, HttpServletResponse response)
             throws IOException, AlipayApiException {

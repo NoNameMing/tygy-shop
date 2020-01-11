@@ -3,6 +3,7 @@ package com.neuedu.shop.mapper;
 import com.neuedu.shop.BaseTest;
 import com.neuedu.shop.common.OrderUtil;
 import com.neuedu.shop.pojo.Order;
+import com.neuedu.shop.pojo.Product;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -26,5 +27,17 @@ public class OrderMapperTest extends BaseTest {
         Order order = new Order();
         order.setOid(OrderUtil.generateOrder());
         mapper.insert(order);
+    }
+
+    @Test
+    public void findById() {
+        System.out.println(mapper.findOrderById("GSPT578658756855846"));
+    }
+
+    @Test
+    public void findOrderById() {
+        Order order = mapper.findOrderById("GSPT578669812547347");
+//        List<Product> products = order.getProductList();
+        System.out.println(order.getCartitem());
     }
 }

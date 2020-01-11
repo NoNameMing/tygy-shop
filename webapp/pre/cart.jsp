@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=utf-8" pageEncoding="utf-8" isELIgnored="false" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!doctype html>
 
 <html>
@@ -16,16 +17,16 @@
     <script src="js/jquery.jcarousel.min.js"></script>
     <script src="js/jquery.accordion.js"></script>
     <script src="js/light_box.js"></script>
+
     <script type="text/javascript">
-        $(document).ready(function() {
+        $(document).ready(function () {
             $(".inline").colorbox({
-                inline : true,
-                width : "50%"
+                inline: true,
+                width: "50%"
             });
         });
 
     </script>
-
 
 
     <!--end js-->
@@ -40,11 +41,11 @@
     <link rel="stylesheet" href="css/orange.css">
     <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/ddsmoothmenu.css" />
-    <link rel="stylesheet" href="css/elastislide.css" />
-    <link rel="stylesheet" href="css/home_flexslider.css" />
+    <link rel="stylesheet" href="css/ddsmoothmenu.css"/>
+    <link rel="stylesheet" href="css/elastislide.css"/>
+    <link rel="stylesheet" href="css/home_flexslider.css"/>
 
-    <link rel="stylesheet" href="css/light_box.css" />
+    <link rel="stylesheet" href="css/light_box.css"/>
     <script src="js/html5.js"></script>
 
 
@@ -52,110 +53,82 @@
 <body>
 <div class="mainContainer sixteen container">
     <!--Header Block-->
-    <%@include file="header.jsp"%>
+    <%@include file="header.jsp" %>
 </div>
-    <!--Content Block-->
-    <section class="content-wrapper">
-        <div class="content-container container">
-            <div class="col-1-layout">
-                <c:forEach items="${items}" var="ci">
-                    <form class="shopping-cart-table">
-                        <li>
-                            <div class="img-box">
-                                <img src="images/cart_img.png" title="" alt="" />
-                            </div> <a class="edit-btn" href="#" title="编辑">${ci.product.name}</a>
-                        </li>
-                        <li>
-                            <div class="remove-item-btn">
-                                <a href="delete.cartitem?id=${ci.id}" title="Remove">
-                                    <img src="images/delete_item_btn.png" title="删除" alt="删除" />
-                                </a>
-                            </div>
-                            <div class="add-to-cart-box">
+<!--Content Block-->
+<section class="content-wrapper">
+    <div class="content-container container">
+        <div class="col-1-layout">
+            <c:forEach items="${items}" var="ci">
+                <form class="shopping-cart-table">
+                    <li>
+                        <div class="img-box">
+                            <img src="images/cart_img.png" title="" alt=""/>
+                        </div>
+                        <a class="edit-btn" href="#" title="编辑">${ci.product.name}</a>
+                    </li>
+                    <li>
+                        <div class="remove-item-btn">
+                            <a href="delete.cartitem?id=${ci.id}" title="Remove">
+                                <img src="images/delete_item_btn.png" title="删除" alt="删除"/>
+                            </a>
+                        </div>
+                        <div class="add-to-cart-box">
                                 <span class="qty-box"> <label>购买数量：</label>
                                     <span>${ci.pcount }</span>
-                                    <input type="hidden" value="${ci.id}" id="id" name="id" />
+                                    <input type="hidden" value="${ci.id}" id="id" name="id"/>
                                     <a>
-                                        <a onclick="update(${ci.id}, document.getElementById('${ci.id}qty').value)">提交修改</a>
+                                        <a onclick="update(${ci.id}, document.getElementById('${ci.id}qty').value)">确认数量</a>
                                         <script>
                                             function update(id, cnt) {
-                                                window.location.href="update.cartitem?id=" + id + "&" + "cnt=" + cnt;
+                                                window.location.href = "update.cartitem?id=" + id + "&" + "cnt=" + cnt;
                                             }
                                         </script>
                                     </a>
                                 </span>
-                            </div>
-                            <div>
-                                    <%--                                --%>
-                                <input type="text" id="${ci.id}qty" name="qty" value="${ci.pcount}"/>
-                            </div>
-                                <script type="text/javascript">
-                                    jQuery(document).ready(function() {
-                                        jQuery(".ajax").colorbox();
-                                    });
+                        </div>
+                        <form>
+                            <input class="inputclass" id="${ci.id}inputDesc" type="button" value="-">
+                            <input type="text" id="${ci.id}qty" name="qty" value="${ci.pcount}"/>
+                            <input class="inputclass" id="${ci.id}inputAdd" type="button" value="+">
+                        </form>
+                        <script type="text/javascript">
+                            $(function number() {
+                                document.getElementById("${ci.id}inputDesc").onclick = function () {
+                                    if (this.form.qty.value > 1) {
+                                        this.form.qty.value--;
+                                    };
+                                };
 
-                                    jQuery(function() {
-                                        jQuery(".add")
-                                            .click(
-                                                function() {
-                                                    var jQueryadd = jQuery(this);
-                                                    var oldValue = jQueryadd
-                                                        .parent()
-                                                        .find(
-                                                            "input")
-                                                        .val();
-                                                    var newVal = 1;
-
-                                                    if (jQueryadd
-                                                        .text() == "") {
-                                                        newVal = parseFloat(oldValue) + 1;
-                                                    }
-                                                    jQueryadd
-                                                        .parent()
-                                                        .find(
-                                                            "input")
-                                                        .val(
-                                                            newVal);
-                                                });
-
-                                        jQuery(".jian")
-                                            .click(
-                                                function() {
-                                                    var jQueryadd = jQuery(this);
-                                                    var oldValue = jQueryadd
-                                                        .parent()
-                                                        .find(
-                                                            "input")
-                                                        .val();
-                                                    var newVal = 1;
-
-                                                    if (jQueryadd
-                                                        .text() == "") {
-                                                        newVal = parseFloat(oldValue) - 2;
-                                                    }
-                                                    if (newVal <= 0) {
-                                                        newVal = 1;
-                                                    }
-                                                    jQueryadd
-                                                        .parent()
-                                                        .find(
-                                                            "input")
-                                                        .val(
-                                                            newVal);
-                                                });
-
-                                    });
-                                </script>
-                            <div class="pro-price">¥${ci.memberprice }</div>
-                        </li>
-                    </form>
-                </c:forEach>
+                                document.getElementById("${ci.id}inputAdd").onclick = function () {
+                                    this.form.qty.value++;
+                                };
+                            });
+                        </script>
+                        <div class="pro-price">¥${ci.memberprice }</div>
+                    </li>
+                </form>
+            </c:forEach>
+        </div>
+        <div class="news-letter-container">
+            <div class="free-shipping-block">
+                <h1>平价果蔬平台</h1>
+                <p>为你选择最好的！</p>
+            </div>
+<%--            <div class="news-letter-block">--%>
+<%--                <input class="submit-btn" type="submit" value="Submit" title="Submit" />--%>
+<%--            </div>--%>
+            <div class="news-letter-block">
+                <a href="insert.order?uid=${user.id}&addr=${user.addr}&productid=${ci.product.id }&ciid=${ci.id}&pname=${ci.product.name}&pcount=${ci.pcount}&pmemberprice=${ci.product.memberprice}" id="${ci.id}" >
+                    下单
+                </a>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 <!--页脚开始-->
 <section class="footer-wrapper">
-    <%@include file="footer.jsp"%>
+    <%@include file="footer.jsp" %>
 </section>
 <!--页脚结束-->
 </body>

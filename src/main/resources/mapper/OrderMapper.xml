@@ -64,7 +64,7 @@
             <result property="itemDate" column="item_date" />
             <result property="memberprice" column="memberprice" />
             <association property="user" javaType="com.neuedu.shop.pojo.User">
-                <id column="id" property="id" />
+                <id column="uid" property="id" />
                 <result column="user_name" property="name" />
                 <result column="user_password" property="password" />
                 <result column="user_phone" property="phone" />
@@ -94,5 +94,9 @@
     <insert id="insert" parameterType="Order">
         insert into t_salesorder values (null, #{uid}, #{oid}, #{addr}, now(), 0)
     </insert>
+
+    <select id="findOrderById" parameterType="string" resultMap="selectOrder">
+        <include refid="baseSQL" /> where order_id = #{oid}
+    </select>
 
 </mapper>

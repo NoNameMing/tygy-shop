@@ -33,9 +33,9 @@
     <script type="text/javascript">
         // 获取 url 中的订单号
         $(function(){
-            alert("hi");
+            // alert("hi");
             var out_trade_no = getUrlParam("out_trade_no");
-            if (out_trade_no != "") {
+            if (out_trade_no != null) {
                window.alert("您订单号为：" + out_trade_no + "的订单已支付成功");
             }
         });

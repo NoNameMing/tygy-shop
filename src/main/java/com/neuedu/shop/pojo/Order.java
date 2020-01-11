@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -30,4 +31,6 @@ public class Order implements Serializable {
     private Timestamp odate; // 下单时间
 
     private int status; // 订单状态
+
+    private List<Product> productList;
 }

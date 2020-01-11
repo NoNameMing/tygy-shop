@@ -13,5 +13,5 @@ public interface OrderService {
 
     void insert(Order order);
 
-    Order getOrderById(String orderId);
+    Order findOrderById(String orderId);
 }

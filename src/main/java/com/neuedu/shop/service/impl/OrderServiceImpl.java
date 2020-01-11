@@ -22,12 +22,11 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public void insert(Order order) {
-        order.setOid(OrderUtil.generateOrder());
         mapper.insert(order);
     }
 
     @Override
-    public Order getOrderById(String orderId) {
-        return null;
+    public Order findOrderById(String orderId) {
+        return mapper.findOrderById(orderId);
     }
 }
